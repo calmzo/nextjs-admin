@@ -32,9 +32,9 @@ const tableData: Order[] = [
     user: {
       image: "/images/user/user-17.jpg",
       name: "Lindsey Curtis",
-      role: "Web Designer",
+      role: "网页设计师",
     },
-    projectName: "Agency Website",
+    projectName: "代理网站",
     team: {
       images: [
         "/images/user/user-22.jpg",
@@ -43,44 +43,44 @@ const tableData: Order[] = [
       ],
     },
     budget: "3.9K",
-    status: "Active",
+    status: "进行中",
   },
   {
     id: 2,
     user: {
       image: "/images/user/user-18.jpg",
       name: "Kaiya George",
-      role: "Project Manager",
+      role: "项目经理",
     },
-    projectName: "Technology",
+    projectName: "技术项目",
     team: {
       images: ["/images/user/user-25.jpg", "/images/user/user-26.jpg"],
     },
     budget: "24.9K",
-    status: "Pending",
+    status: "待处理",
   },
   {
     id: 3,
     user: {
       image: "/images/user/user-17.jpg",
       name: "Zain Geidt",
-      role: "Content Writing",
+      role: "内容写作",
     },
-    projectName: "Blog Writing",
+    projectName: "博客写作",
     team: {
       images: ["/images/user/user-27.jpg"],
     },
     budget: "12.7K",
-    status: "Active",
+    status: "进行中",
   },
   {
     id: 4,
     user: {
       image: "/images/user/user-20.jpg",
       name: "Abram Schleifer",
-      role: "Digital Marketer",
+      role: "数字营销",
     },
-    projectName: "Social Media",
+    projectName: "社交媒体",
     team: {
       images: [
         "/images/user/user-28.jpg",
@@ -89,16 +89,16 @@ const tableData: Order[] = [
       ],
     },
     budget: "2.8K",
-    status: "Cancel",
+    status: "已取消",
   },
   {
     id: 5,
     user: {
       image: "/images/user/user-21.jpg",
       name: "Carla George",
-      role: "Front-end Developer",
+      role: "前端开发",
     },
-    projectName: "Website",
+    projectName: "网站项目",
     team: {
       images: [
         "/images/user/user-31.jpg",
@@ -107,7 +107,7 @@ const tableData: Order[] = [
       ],
     },
     budget: "4.5K",
-    status: "Active",
+    status: "进行中",
   },
 ];
 
@@ -124,31 +124,31 @@ export default function BasicTableOne() {
                   isHeader
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                 >
-                  User
+                  用户
                 </TableCell>
                 <TableCell
                   isHeader
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                 >
-                  Project Name
+                  项目名称
                 </TableCell>
                 <TableCell
                   isHeader
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                 >
-                  Team
+                  团队
                 </TableCell>
                 <TableCell
                   isHeader
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                 >
-                  Status
+                  状态
                 </TableCell>
                 <TableCell
                   isHeader
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                 >
-                  Budget
+                  预算
                 </TableCell>
               </TableRow>
             </TableHeader>

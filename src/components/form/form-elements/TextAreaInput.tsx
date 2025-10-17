@@ -8,11 +8,11 @@ export default function TextAreaInput() {
   const [message, setMessage] = useState("");
   const [messageTwo, setMessageTwo] = useState("");
   return (
-    <ComponentCard title="Textarea input field">
+    <ComponentCard title="文本区域输入字段">
       <div className="space-y-6">
         {/* Default TextArea */}
         <div>
-          <Label>Description</Label>
+          <Label>描述</Label>
           <TextArea
             value={message}
             onChange={(value) => setMessage(value)}
@@ -22,19 +22,19 @@ export default function TextAreaInput() {
 
         {/* Disabled TextArea */}
         <div>
-          <Label>Description</Label>
+          <Label>描述</Label>
           <TextArea rows={6} disabled />
         </div>
 
         {/* Error TextArea */}
         <div>
-          <Label>Description</Label>
+          <Label>描述</Label>
           <TextArea
             rows={6}
             value={messageTwo}
             error
             onChange={(value) => setMessageTwo(value)}
-            hint="Please enter a valid message."
+            hint="请输入有效消息。"
           />
         </div>
       </div>

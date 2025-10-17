@@ -10,30 +10,30 @@ import DatePicker from '@/components/form/date-picker';
 export default function DefaultInputs() {
   const [showPassword, setShowPassword] = useState(false);
   const options = [
-    { value: "marketing", label: "Marketing" },
-    { value: "template", label: "Template" },
-    { value: "development", label: "Development" },
+    { value: "marketing", label: "营销" },
+    { value: "template", label: "模板" },
+    { value: "development", label: "开发" },
   ];
   const handleSelectChange = (value: string) => {
     console.log("Selected value:", value);
   };
   return (
-    <ComponentCard title="Default Inputs">
+    <ComponentCard title="默认输入">
       <div className="space-y-6">
         <div>
-          <Label>Input</Label>
+          <Label>输入</Label>
           <Input type="text" />
         </div>
         <div>
-          <Label>Input with Placeholder</Label>
+          <Label>带占位符的输入</Label>
           <Input type="text" placeholder="info@gmail.com" />
         </div>
         <div>
-          <Label>Select Input</Label>
+          <Label>选择输入</Label>
           <div className="relative">
             <Select
             options={options}
-            placeholder="Select an option"
+            placeholder="选择一个选项"
             onChange={handleSelectChange}
             className="dark:bg-dark-900"
           />
@@ -43,11 +43,11 @@ export default function DefaultInputs() {
           </div>
         </div>
         <div>
-          <Label>Password Input</Label>
+          <Label>密码输入</Label>
           <div className="relative">
             <Input
               type={showPassword ? "text" : "password"}
-              placeholder="Enter your password"
+              placeholder="输入您的密码"
             />
             <button
               onClick={() => setShowPassword(!showPassword)}
@@ -65,8 +65,8 @@ export default function DefaultInputs() {
         <div>
           <DatePicker
             id="date-picker"
-            label="Date Picker Input"
-            placeholder="Select a date"
+            label="日期选择器输入"
+            placeholder="选择一个日期"
             onChange={(dates, currentDateString) => {
               // Handle your logic
               console.log({ dates, currentDateString });
@@ -75,7 +75,7 @@ export default function DefaultInputs() {
         </div>
 
         <div>
-          <Label htmlFor="tm">Time Picker Input</Label>
+          <Label htmlFor="tm">时间选择器输入</Label>
           <div className="relative">
             <Input
               type="time"
@@ -89,11 +89,11 @@ export default function DefaultInputs() {
           </div>
         </div>
         <div>
-          <Label htmlFor="tm">Input with Payment</Label>
+          <Label htmlFor="tm">支付输入</Label>
           <div className="relative">
             <Input
               type="text"
-              placeholder="Card number"
+              placeholder="卡号"
               className="pl-[62px]"
             />
             <span className="absolute left-0 top-1/2 flex h-11 w-[46px] -translate-y-1/2 items-center justify-center border-r border-gray-200 dark:border-gray-800">

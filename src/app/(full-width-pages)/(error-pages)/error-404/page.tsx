@@ -5,9 +5,9 @@ import Link from "next/link";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Next.js Error 404 | TailAdmin - Next.js Dashboard Template",
+  title: "Next.js 错误 404 | TailAdmin - Next.js 仪表板模板",
   description:
-    "This is Next.js Error 404 page for TailAdmin - Next.js Tailwind CSS Admin Dashboard Template",
+    "这是 TailAdmin - Next.js Tailwind CSS 管理仪表板模板的错误 404 页面",
 };
 
 export default function Error404() {
@@ -16,7 +16,7 @@ export default function Error404() {
       <GridShape />
       <div className="mx-auto w-full max-w-[242px] text-center sm:max-w-[472px]">
         <h1 className="mb-8 font-bold text-gray-800 text-title-md dark:text-white/90 xl:text-title-2xl">
-          ERROR
+          错误
         </h1>
 
         <Image
@@ -35,14 +35,14 @@ export default function Error404() {
         />
 
         <p className="mt-10 mb-6 text-base text-gray-700 dark:text-gray-400 sm:text-lg">
-          We can’t seem to find the page you are looking for!
+          我们似乎找不到您要查找的页面！
         </p>
 
         <Link
           href="/"
           className="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-5 py-3.5 text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200"
         >
-          Back to Home Page
+          返回首页
         </Link>
       </div>
       {/* <!-- Footer --> */}
