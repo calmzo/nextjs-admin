@@ -12,6 +12,7 @@ import {
   GridIcon,
   HorizontaLDots,
   ListIcon,
+  MailIcon,
   PageIcon,
   PieChartIcon,
   PlugInIcon,
@@ -66,11 +67,20 @@ const navItems: NavItem[] = [
     ],
   },
 ];
-const chatItems: NavItem[] = [
+
+const supportItems: NavItem[] = [
   {
     icon: <ChatIcon />,
-    name: "聊天",
+    name: "Chat",
     path: "/chat",
+  },
+  {
+    icon: <MailIcon />,
+    name: "Email",
+    subItems: [
+      { name: "Inbox", path: "/email-inbox" },
+      { name: "Details", path: "/email-detail" },
+    ],
   },
 ];
 
@@ -252,19 +262,19 @@ const AppSidebar: React.FC = () => {
   useEffect(() => {
     // Check if the current path matches any submenu item
     let submenuMatched = false;
-    ["main", "chat", "others"].forEach((menuType) => {
+    ["main", "support", "others"].forEach((menuType) => {
       const items =
         menuType === "main"
           ? navItems
-          : menuType === "chat"
-          ? chatItems
+          : menuType === "support"
+          ? supportItems
           : othersItems;
       items.forEach((nav, index) => {
         if (nav.subItems) {
           nav.subItems.forEach((subItem) => {
             if (isActive(subItem.path)) {
               setOpenSubmenu({
-                type: menuType as "main" | "others" | "chat",
+                type: menuType as "main" | "others" | "support",
                 index,
               });
               submenuMatched = true;
@@ -383,12 +393,12 @@ const AppSidebar: React.FC = () => {
                 }`}
               >
                 {isExpanded || isHovered || isMobileOpen ? (
-                  "Chat"
+                  "Support"
                 ) : (
                   <HorizontaLDots />
                 )}
               </h2>
-              {renderMenuItems(chatItems, "chat")}
+              {renderMenuItems(supportItems, "support")}
             </div>
 
             <div className="">
