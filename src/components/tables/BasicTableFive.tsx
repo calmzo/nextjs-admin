@@ -90,31 +90,31 @@ export default function BasicTableFive() {
                   isHeader
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                 >
-                  Products
+                  产品
                 </TableCell>
                 <TableCell
                   isHeader
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                 >
-                  Category
+                  分类
                 </TableCell>
                 <TableCell
                   isHeader
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                 >
-                  Country
+                  国家
                 </TableCell>
                 <TableCell
                   isHeader
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                 >
-                  CR
+                  渠道
                 </TableCell>
                 <TableCell
                   isHeader
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                 >
-                  Value
+                  数值
                 </TableCell>
               </TableRow>
             </TableHeader>
@@ -146,7 +146,7 @@ export default function BasicTableFive() {
                     {product.cr}
                   </TableCell>
                   <TableCell className="px-4 text-theme-sm sm:px-6 text-start text-success-600">
-                    ${product.value}
+                    {product.value}
                   </TableCell>
                 </TableRow>
               ))}
