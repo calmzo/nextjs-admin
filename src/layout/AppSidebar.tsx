@@ -7,6 +7,7 @@ import { useSidebar } from "../context/SidebarContext";
 import {
   BoxCubeIcon,
   CalenderIcon,
+  ChatIcon,
   ChevronDownIcon,
   GridIcon,
   HorizontaLDots,
@@ -51,7 +52,10 @@ const navItems: NavItem[] = [
   {
     name: "表格",
     icon: <TableIcon />,
-    subItems: [{ name: "基础表格", path: "/basic-tables", pro: false },{ name: "Data Tables", path: "/data-tables", pro: false }],
+    subItems: [
+      { name: "基础表格", path: "/basic-tables", pro: false },
+      { name: "Data Tables", path: "/data-tables", pro: false }
+    ],
   },
   {
     name: "页面",
@@ -60,6 +64,13 @@ const navItems: NavItem[] = [
       { name: "空白页", path: "/blank", pro: false },
       { name: "404 错误", path: "/error-404", pro: false },
     ],
+  },
+];
+const chatItems: NavItem[] = [
+  {
+    icon: <ChatIcon />,
+    name: "聊天",
+    path: "/chat",
   },
 ];
 
@@ -100,7 +111,7 @@ const AppSidebar: React.FC = () => {
 
   const renderMenuItems = (
     navItems: NavItem[],
-    menuType: "main" | "others"
+    menuType: "main" | "others" | "chat"
   ) => (
     <ul className="flex flex-col gap-4">
       {navItems.map((nav, index) => (
@@ -227,7 +238,7 @@ const AppSidebar: React.FC = () => {
   );
 
   const [openSubmenu, setOpenSubmenu] = useState<{
-    type: "main" | "others";
+    type: "main" | "others" | "chat";
     index: number;
   } | null>(null);
   const [subMenuHeight, setSubMenuHeight] = useState<Record<string, number>>(
@@ -241,14 +252,19 @@ const AppSidebar: React.FC = () => {
   useEffect(() => {
     // Check if the current path matches any submenu item
     let submenuMatched = false;
-    ["main", "others"].forEach((menuType) => {
-      const items = menuType === "main" ? navItems : othersItems;
+    ["main", "chat", "others"].forEach((menuType) => {
+      const items =
+        menuType === "main"
+          ? navItems
+          : menuType === "chat"
+          ? chatItems
+          : othersItems;
       items.forEach((nav, index) => {
         if (nav.subItems) {
           nav.subItems.forEach((subItem) => {
             if (isActive(subItem.path)) {
               setOpenSubmenu({
-                type: menuType as "main" | "others",
+                type: menuType as "main" | "others" | "chat",
                 index,
               });
               submenuMatched = true;
@@ -277,7 +293,7 @@ const AppSidebar: React.FC = () => {
     }
   }, [openSubmenu]);
 
-  const handleSubmenuToggle = (index: number, menuType: "main" | "others") => {
+  const handleSubmenuToggle = (index: number, menuType: "main" | "others" | "chat") => {
     setOpenSubmenu((prevOpenSubmenu) => {
       if (
         prevOpenSubmenu &&
@@ -356,6 +372,23 @@ const AppSidebar: React.FC = () => {
                 )}
               </h2>
               {renderMenuItems(navItems, "main")}
+            </div>
+
+            <div>
+              <h2
+                className={`mb-4 text-xs uppercase flex leading-[20px] text-gray-400 ${
+                  !isExpanded && !isHovered
+                    ? "lg:justify-center"
+                    : "justify-start"
+                }`}
+              >
+                {isExpanded || isHovered || isMobileOpen ? (
+                  "Chat"
+                ) : (
+                  <HorizontaLDots />
+                )}
+              </h2>
+              {renderMenuItems(chatItems, "chat")}
             </div>
 
             <div className="">
