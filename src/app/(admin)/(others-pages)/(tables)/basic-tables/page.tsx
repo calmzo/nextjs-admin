@@ -3,6 +3,8 @@ import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import BasicTableOne from "@/components/tables/BasicTableOne";
 import BasicTableTwo from "@/components/tables/BasicTableTwo";
 import BasicTableThree from "@/components/tables/BasicTableThree";
+import BasicTableFour from "@/components/tables/BasicTableFour";
+import BasicTableFive from "@/components/tables/BasicTableFive";
 
 import { Metadata } from "next";
 import React from "react";
@@ -27,6 +29,12 @@ export default function BasicTables() {
         </ComponentCard>
         <ComponentCard title="Basic Table 3">
           <BasicTableThree />
+        </ComponentCard>
+        <ComponentCard title="Basic Table 4">
+          <BasicTableFour />
+        </ComponentCard>
+        <ComponentCard title="Basic Table 5">
+          <BasicTableFive />
         </ComponentCard>
       </div>
     </div>
