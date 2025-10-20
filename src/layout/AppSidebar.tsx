@@ -111,6 +111,12 @@ const othersItems: NavItem[] = [
     subItems: [
       { name: "登录", path: "/signin", pro: false },
       { name: "注册", path: "/signup", pro: false },
+      { name: "重置密码", path: "/reset-password", pro: false },
+      {
+        name: "Two Step Verification",
+        path: "/two-step-verification",
+        pro: true,
+      },
     ],
   },
 ];
