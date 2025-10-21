@@ -104,6 +104,7 @@ const othersItems: NavItem[] = [
       { name: "按钮", path: "/buttons", pro: false },
       { name: "Buttons Group", path: "/buttons-group", pro: true },
       { name: "Cards", path: "/cards", pro: true },
+      { name: "Carousel", path: "/carousel", pro: false },
       { name: "图片", path: "/images", pro: false },
       { name: "视频", path: "/videos", pro: false },
     ],
