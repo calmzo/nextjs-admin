@@ -108,6 +108,7 @@ const othersItems: NavItem[] = [
       { name: "Dropdowns", path: "/dropdowns", pro: true },
       { name: "Links", path: "/links", pro: true },
       { name: "Lists", path: "/lists", pro: true },
+      { name: "Notifications", path: "/notifications", pro: true },
       { name: "图片", path: "/images", pro: false },
       { name: "视频", path: "/videos", pro: false },
     ],
