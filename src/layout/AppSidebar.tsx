@@ -91,6 +91,7 @@ const othersItems: NavItem[] = [
     subItems: [
       { name: "折线图", path: "/line-chart", pro: false },
       { name: "柱状图", path: "/bar-chart", pro: false },
+      { name: "Pie Chart", path: "/pie-chart", pro: true },
     ],
   },
   {
