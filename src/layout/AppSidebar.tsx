@@ -115,6 +115,7 @@ const othersItems: NavItem[] = [
       { name: "Ribbons", path: "/ribbons", pro: true },
       { name: "Spinners", path: "/spinners", pro: true },
       { name: "Tabs", path: "/tabs", pro: true },
+      { name: "Tooltips", path: "/tooltip", pro: true },
       { name: "图片", path: "/images", pro: false },
       { name: "视频", path: "/videos", pro: false },
     ],
