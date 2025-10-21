@@ -113,6 +113,7 @@ const othersItems: NavItem[] = [
       { name: "Popovers", path: "/popovers", pro: true },
       { name: "ProgressBar", path: "/progressbar", pro: true },
       { name: "Ribbons", path: "/ribbons", pro: true },
+      { name: "Spinners", path: "/spinners", pro: true },
       { name: "图片", path: "/images", pro: false },
       { name: "视频", path: "/videos", pro: false },
     ],
