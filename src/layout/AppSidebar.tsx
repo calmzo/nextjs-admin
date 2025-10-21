@@ -100,7 +100,10 @@ const othersItems: NavItem[] = [
       { name: "警告", path: "/alerts", pro: false },
       { name: "头像", path: "/avatars", pro: false },
       { name: "徽章", path: "/badge", pro: false },
+      { name: "面包屑", path: "/breadcrumb", pro: true },
       { name: "按钮", path: "/buttons", pro: false },
+      { name: "Buttons Group", path: "/buttons-group", pro: true },
+      { name: "Cards", path: "/cards", pro: true },
       { name: "图片", path: "/images", pro: false },
       { name: "视频", path: "/videos", pro: false },
     ],
@@ -127,7 +130,7 @@ const AppSidebar: React.FC = () => {
 
   const renderMenuItems = (
     navItems: NavItem[],
-    menuType: "main" | "others" | "chat"
+    menuType: "main" | "others" | "support"
   ) => (
     <ul className="flex flex-col gap-4">
       {navItems.map((nav, index) => (
@@ -254,7 +257,7 @@ const AppSidebar: React.FC = () => {
   );
 
   const [openSubmenu, setOpenSubmenu] = useState<{
-    type: "main" | "others" | "chat";
+    type: "main" | "others" | "support";
     index: number;
   } | null>(null);
   const [subMenuHeight, setSubMenuHeight] = useState<Record<string, number>>(
@@ -309,7 +312,7 @@ const AppSidebar: React.FC = () => {
     }
   }, [openSubmenu]);
 
-  const handleSubmenuToggle = (index: number, menuType: "main" | "others" | "chat") => {
+  const handleSubmenuToggle = (index: number, menuType: "main" | "others" | "support") => {
     setOpenSubmenu((prevOpenSubmenu) => {
       if (
         prevOpenSubmenu &&
