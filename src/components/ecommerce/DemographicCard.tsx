@@ -1,11 +1,10 @@
 "use client";
 import Image from "next/image";
-
-import CountryMap from "./CountryMap";
-import { useState } from "react";
-import { MoreDotIcon } from "@/icons";
 import { Dropdown } from "../ui/dropdown/Dropdown";
 import { DropdownItem } from "../ui/dropdown/DropdownItem";
+import { MoreDotIcon } from "@/icons";
+import CountryMap from "./CountryMap";
+import { useState } from "react";
 
 export default function DemographicCard() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,20 +16,19 @@ export default function DemographicCard() {
   function closeDropdown() {
     setIsOpen(false);
   }
-
   return (
     <div className="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] sm:p-6">
       <div className="flex justify-between">
         <div>
           <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-            客户人口统计
+            Customers Demographic
           </h3>
           <p className="mt-1 text-gray-500 text-theme-sm dark:text-gray-400">
-            基于国家的客户数量
+            Number of customer based on country
           </p>
         </div>
 
-        <div className="relative inline-block">
+        <div className="relative h-fit">
           <button onClick={toggleDropdown} className="dropdown-toggle">
             <MoreDotIcon className="text-gray-400 hover:text-gray-700 dark:hover:text-gray-300" />
           </button>
@@ -43,13 +41,13 @@ export default function DemographicCard() {
               onItemClick={closeDropdown}
               className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
             >
-              查看更多
+              View More
             </DropdownItem>
             <DropdownItem
               onItemClick={closeDropdown}
               className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
             >
-              删除
+              Delete
             </DropdownItem>
           </Dropdown>
         </div>
@@ -80,7 +78,7 @@ export default function DemographicCard() {
                 USA
               </p>
               <span className="block text-gray-500 text-theme-xs dark:text-gray-400">
-                2,379 客户
+                2,379 Customers
               </span>
             </div>
           </div>
@@ -111,7 +109,7 @@ export default function DemographicCard() {
                 France
               </p>
               <span className="block text-gray-500 text-theme-xs dark:text-gray-400">
-                589 客户
+                589 Customers
               </span>
             </div>
           </div>
