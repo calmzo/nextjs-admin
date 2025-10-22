@@ -1,16 +1,15 @@
 "use client";
-
 import { useState } from "react";
-import Badge from "../ui/badge/Badge";
+import Badge from "../../ui/badge/Badge";
 import {
   Table,
   TableBody,
   TableCell,
   TableHeader,
   TableRow,
-} from "../ui/table";
-import Button from "../ui/button/Button";
-
+} from "../../ui/table";
+import Button from "../../ui/button/Button";
+import Image from "next/image";
 import TableDropdown from "@/components/common/TableDropdown";
 
 // Type definition for the transaction data
@@ -250,7 +249,7 @@ export default function BasicTableThree() {
                 </TableCell>
                 <TableCell
                   isHeader
-                  className="px-4 py-3  font-normal text-gray-500 text-start text-theme-sm dark:text-gray-400"
+                  className="px-4 py-3 font-normal text-gray-500 text-start text-theme-sm dark:text-gray-400"
                 >
                   <div className="relative">
                     <span className="sr-only">Action</span>
@@ -264,11 +263,10 @@ export default function BasicTableThree() {
                   <TableCell className="px-4 py-4">
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8">
-                        <img
+                        <Image
                           width={32}
                           height={32}
                           src={item.image}
-                          className="size-8"
                           alt="brand"
                         />
                       </div>

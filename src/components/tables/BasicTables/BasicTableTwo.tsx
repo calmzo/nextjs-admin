@@ -1,18 +1,17 @@
 "use client";
-
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useState } from "react";
 import {
   Table,
   TableBody,
   TableCell,
   TableHeader,
   TableRow,
-} from "../ui/table";
-import { TrashBinIcon } from "../../icons";
-import AvatarText from "../ui/avatar/AvatarText";
+} from "../../ui/table";
+import { TrashBinIcon } from "../../../icons";
+import AvatarText from "../../ui/avatar/AvatarText";
 
-import Checkbox from "../form/input/Checkbox";
-import Badge from "../ui/badge/Badge";
+import Checkbox from "../../form/input/Checkbox";
+import Badge from "../../ui/badge/Badge";
 
 // Interface for the table row data
 interface TableRowData {
@@ -144,59 +143,32 @@ export default function BasicTableTwo() {
   const [selectedRows, setSelectedRows] = useState<string[]>([]);
   const [selectAll, setSelectAll] = useState<boolean>(false);
 
-  const handleSelectAll = useCallback(() => {
+  const handleSelectAll = () => {
     setSelectAll(!selectAll);
     if (!selectAll) {
       setSelectedRows(tableRowData.map((row) => row.id));
     } else {
       setSelectedRows([]);
     }
-  }, [selectAll]);
+  };
 
-  const handleRowSelect = useCallback((id: string) => {
+  const handleRowSelect = (id: string) => {
     setSelectedRows((prevSelected) =>
       prevSelected.includes(id)
         ? prevSelected.filter((rowId) => rowId !== id)
         : [...prevSelected, id]
     );
-  }, []);
-
-  const handleDelete = useCallback((id: string) => {
-    // 这里可以添加删除逻辑
-    console.log('删除订单:', id);
-  }, []);
-
-  // 状态标签翻译映射
-  const statusLabels = useMemo(() => ({
-    Complete: "已完成",
-    Pending: "待处理", 
-    Cancel: "已取消",
-    Warning: "警告"
-  }), []);
-
-  const handleFilter = useCallback(() => {
-    // 这里可以添加筛选逻辑
-    console.log('打开筛选器');
-  }, []);
-
-  const handleSeeAll = useCallback(() => {
-    // 这里可以添加查看全部逻辑
-    console.log('查看全部订单');
-  }, []);
+  };
   return (
-    <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
+    <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white pt-4 dark:border-white/[0.05] dark:bg-white/[0.03]">
       <div className="flex flex-col gap-4 px-6 mb-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-            最近订单
+            Recent Orders
           </h3>
         </div>
         <div className="flex items-center gap-3">
-          <button 
-            onClick={handleFilter}
-            className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-3 text-theme-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200"
-            aria-label="筛选订单"
-          >
+          <button className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-3 text-theme-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
             <svg
               className="stroke-current fill-white dark:fill-gray-800"
               width="20"
@@ -232,52 +204,48 @@ export default function BasicTableTwo() {
                 strokeWidth="1.5"
               />
             </svg>
-            筛选
+            Filter
           </button>
-          <button 
-            onClick={handleSeeAll}
-            className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-3 text-theme-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200"
-            aria-label="查看全部订单"
-          >
-            查看全部
+          <button className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-3 text-theme-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
+            See all
           </button>
         </div>
       </div>
 
       <div className="max-w-full overflow-x-auto">
         <Table>
-          <TableHeader className="border-b border-gray-100 dark:border-white/[0.05]">
+          <TableHeader className="px-6 py-3.5 border-t border-gray-100 border-y bg-gray-50 dark:border-white/[0.05] dark:bg-gray-900">
             <TableRow>
-              <TableCell isHeader className="px-5 py-3 font-medium text-gray-500 text-theme-xs dark:text-gray-400 text-start">
+              <TableCell className="px-6 py-3 font-medium text-gray-500 sm:px-6 text-theme-xs dark:text-gray-400 text-start">
                 <div className="flex items-center gap-3">
                   <div>
                     <Checkbox checked={selectAll} onChange={handleSelectAll} />
                   </div>
                   <div>
                     <span className="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
-                      订单ID
+                      Deal ID
                     </span>
                   </div>
                 </div>
               </TableCell>
 
-              <TableCell isHeader className="px-5 py-3 font-medium text-gray-500 text-theme-xs dark:text-gray-400 text-start">
-                客户
+              <TableCell className="px-6 py-3 font-medium text-gray-500 sm:px-6 text-theme-xs dark:text-gray-400 text-start">
+                Customer
               </TableCell>
-              <TableCell isHeader className="px-5 py-3 font-medium text-gray-500 text-theme-xs dark:text-gray-400 text-start">
-                产品/服务
+              <TableCell className="px-6 py-3 font-medium text-gray-500 sm:px-6 text-theme-xs dark:text-gray-400 text-start">
+                Product/Service
               </TableCell>
-              <TableCell isHeader className="px-5 py-3 font-medium text-gray-500 text-theme-xs dark:text-gray-400 text-start">
-                交易金额
+              <TableCell className="px-6 py-3 font-medium text-gray-500 sm:px-6 text-theme-xs dark:text-gray-400 text-start">
+                Deal Value
               </TableCell>
-              <TableCell isHeader className="px-5 py-3 font-medium text-gray-500 text-theme-xs dark:text-gray-400 text-start">
-                成交日期
+              <TableCell className="px-6 py-3 font-medium text-gray-500 sm:px-6 text-theme-xs dark:text-gray-400 text-start">
+                Close Date
               </TableCell>
-              <TableCell isHeader className="px-5 py-3 font-medium text-gray-500 text-theme-xs dark:text-gray-400 text-start">
-                状态
+              <TableCell className="px-6 py-3 font-medium text-gray-500 sm:px-6 text-theme-xs dark:text-gray-400 text-start">
+                Status
               </TableCell>
-              <TableCell isHeader className="px-5 py-3 font-medium text-gray-500 text-theme-xs dark:text-gray-400 text-start">
-                操作
+              <TableCell className="px-6 py-3 font-medium text-gray-500 sm:px-6 text-theme-xs dark:text-gray-400 text-start">
+                Action
               </TableCell>
             </TableRow>
           </TableHeader>
@@ -339,18 +307,13 @@ export default function BasicTableTwo() {
                     }
                     size="sm"
                   >
-                    {statusLabels[row.status.type] || row.status.type}
+                    {row.status.type}
                   </Badge>
                 </TableCell>
                 <TableCell className="px-4 sm:px-6 py-3.5">
                   {row.actions.delete && (
-                    <button
-                      onClick={() => handleDelete(row.id)}
-                      className="p-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-                      aria-label={`删除订单 ${row.id}`}
-                      title="删除订单"
-                    >
-                      <TrashBinIcon className="text-gray-700 cursor-pointer size-5 hover:text-error-500 dark:text-gray-400 dark:hover:text-error-500" />
+                    <button>
+                      <TrashBinIcon className="cursor-pointer  text-gray-700 hover:text-error-500 dark:text-gray-400 dark:hover:text-error-500" />
                     </button>
                   )}
                 </TableCell>
