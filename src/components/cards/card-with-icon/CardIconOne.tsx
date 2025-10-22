@@ -1,4 +1,5 @@
-import { CardDescription, CardTitle } from "@/components/ui/card";
+import React from "react";
+import { CardDescription, CardTitle } from "../../ui/card";
 
 export default function CardIconOne() {
   return (

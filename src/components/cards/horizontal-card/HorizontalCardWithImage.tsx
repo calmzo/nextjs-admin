@@ -1,4 +1,4 @@
-import ComponentCard from "@/components/common/ComponentCard";
+import ComponentCard from "../../common/ComponentCard";
 import CardFour from "./CardFour";
 import CardFive from "./CardFive";
 

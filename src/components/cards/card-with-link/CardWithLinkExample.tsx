@@ -1,4 +1,5 @@
-import ComponentCard from "@/components/common/ComponentCard";
+import React from "react";
+import ComponentCard from "../../common/ComponentCard";
 import CardLinkOne from "./CardLinkOne";
 import CardLinkTwo from "./CardLinkTwo";
 

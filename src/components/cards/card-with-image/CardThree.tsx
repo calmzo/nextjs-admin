@@ -1,22 +1,28 @@
-import { Card, CardDescription, CardTitle } from "@/components/ui/card";
+import React from "react";
+import { CardDescription, CardTitle } from "../../ui/card";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function CardThree() {
   return (
-    <Card>
+    <div className="rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-white/[0.03]">
       <div className="mb-5 overflow-hidden rounded-lg">
-        <img
+        <Image
+          width={303}
+          height={190}
           src="/images/cards/card-03.png"
           alt="card"
-          className="overflow-hidden rounded-lg"
+          className="w-full overflow-hidden rounded-lg"
         />
       </div>
       <div>
         <CardTitle>Card title</CardTitle>
+
         <CardDescription>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi
           architecto aspernatur cum et ipsum
         </CardDescription>
+
         <Link
           href="/"
           className="inline-flex items-center gap-1 mt-4 text-sm text-brand-500 hover:text-brand-600"
@@ -39,6 +45,6 @@ export default function CardThree() {
           Card link
         </Link>
       </div>
-    </Card>
+    </div>
   );
 }

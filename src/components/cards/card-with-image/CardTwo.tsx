@@ -1,14 +1,19 @@
+import React from "react";
+
+import { CardDescription } from "../../ui/card";
 import Link from "next/link";
-import { Card, CardDescription } from "@/components/ui/card";
+import Image from "next/image";
 
 export default function CardTwo() {
   return (
-    <Card>
+    <div className="rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-white/[0.03]">
       <div className="mb-5 overflow-hidden rounded-lg">
-        <img
+        <Image
+          width={303}
+          height={190}
           src="/images/cards/card-02.png"
           alt="card"
-          className="overflow-hidden rounded-lg"
+          className="w-full overflow-hidden rounded-lg"
         />
       </div>
       <div>
@@ -23,6 +28,6 @@ export default function CardTwo() {
           Read more
         </Link>
       </div>
-    </Card>
+    </div>
   );
 }
