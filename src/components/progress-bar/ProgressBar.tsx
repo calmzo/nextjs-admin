@@ -1,3 +1,5 @@
+import React from "react";
+
 type ProgressBarProps = {
   progress: number;
   size?: "sm" | "md" | "lg" | "xl";
