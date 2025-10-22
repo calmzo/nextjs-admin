@@ -1,3 +1,7 @@
+"use client";
+import Image from "next/image";
+import React from "react";
+import SimpleBar from "simplebar-react";
 import EmailDetailsHeader from "./EmailDetailsHeader";
 import EmailDetailsBottom from "./EmailDetailsBottom";
 
@@ -5,11 +9,11 @@ export default function EmailWrapper() {
   return (
     <div className="flex flex-col justify-between overflow-hidden rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03] xl:h-full">
       <EmailDetailsHeader />
-      <div className="custom-scrollbar max-h-[500px] 2xl:max-h-[780px] overflow-auto">
-        <div className="p-5 xl:p-6">
+      <SimpleBar className="custom-scrollbar max-h-[500px] 2xl:max-h-[780px]">
+        <div className=" p-5  xl:p-6">
           <div className="flex items-center gap-3 mb-9">
             <div className="w-12 h-12 overflow-hidden rounded-full">
-              <img
+              <Image
                 width={48}
                 height={48}
                 src="/images/user/user-18.jpg"
@@ -94,8 +98,8 @@ export default function EmailWrapper() {
             <div className="flex flex-col items-center gap-3 sm:flex-row">
               <div className="relative hover:border-gray-300 dark:hover:border-white/[0.05] flex w-full cursor-pointer items-center gap-3 rounded-xl border border-gray-200 bg-white py-2.5 pl-3 pr-5 dark:border-gray-800 dark:bg-white/5 sm:w-auto">
                 <div className="w-full h-10 max-w-10">
-                  <img
-                    src="/images/task/pdf.svg"
+                  <Image
+                    src="./images/task/pdf.svg"
                     width={40}
                     height={40}
                     className="w-full"
@@ -120,10 +124,10 @@ export default function EmailWrapper() {
 
               <div className="relative hover:border-gray-300 dark:hover:border-white/[0.05] flex w-full cursor-pointer items-center gap-3 rounded-xl border border-gray-200 bg-white py-2.5 pl-3 pr-5 dark:border-gray-800 dark:bg-white/5 sm:w-auto">
                 <div className="w-full h-10 max-w-10">
-                  <img
+                  <Image
                     width={40}
                     height={40}
-                    src="/images/task/google-drive.svg"
+                    src="./images/task/google-drive.svg"
                     alt="icon"
                   />
                 </div>
@@ -145,7 +149,7 @@ export default function EmailWrapper() {
             </div>
           </div>
         </div>
-      </div>
+      </SimpleBar>
       <EmailDetailsBottom />
     </div>
   );

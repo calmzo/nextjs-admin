@@ -1,5 +1,4 @@
 "use client";
-
 import ChatHeaderTitle from "./ChatHeaderTitle";
 
 interface ChatHeaderProps {
@@ -12,7 +11,6 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({ onToggle }) => {
       <ChatHeaderTitle />
       <div className="flex items-center gap-3 mt-4">
         <button
-          type="button"
           onClick={onToggle}
           className="flex items-center justify-center w-full text-gray-700 border border-gray-300 rounded-lg h-11 max-w-11 dark:border-gray-700 dark:text-gray-400 xl:hidden"
         >
@@ -34,7 +32,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({ onToggle }) => {
         </button>
         <div className="relative w-full my-2">
           <form>
-            <button type="button" className="absolute -translate-y-1/2 left-4 top-1/2">
+            <button className="absolute -translate-y-1/2 left-4 top-1/2">
               <svg
                 className="fill-gray-500 dark:fill-gray-400"
                 width="20"

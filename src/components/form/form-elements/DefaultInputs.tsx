@@ -1,53 +1,50 @@
 "use client";
-import React, { useState } from 'react';
-import ComponentCard from '../../common/ComponentCard';
-import Label from '../Label';
-import Input from '../input/InputField';
-import Select from '../Select';
-import { ChevronDownIcon, EyeCloseIcon, EyeIcon, TimeIcon } from '../../../icons';
-import DatePicker from '@/components/form/date-picker';
+import React, { useState } from "react";
+import ComponentCard from "../../common/ComponentCard";
+import Label from "../Label";
+import Input from "../input/InputField";
+import Select from "../Select";
+import { EyeCloseIcon, EyeIcon, TimeIcon } from "../../../icons";
+import DatePicker from "@/components/form/date-picker";
 
 export default function DefaultInputs() {
   const [showPassword, setShowPassword] = useState(false);
   const options = [
-    { value: "marketing", label: "营销" },
-    { value: "template", label: "模板" },
-    { value: "development", label: "开发" },
+    { value: "marketing", label: "Marketing" },
+    { value: "template", label: "Template" },
+    { value: "development", label: "Development" },
   ];
   const handleSelectChange = (value: string) => {
     console.log("Selected value:", value);
   };
+
   return (
-    <ComponentCard title="默认输入">
+    <ComponentCard title="Default Inputs">
       <div className="space-y-6">
         <div>
-          <Label>输入</Label>
-          <Input type="text" />
+          <Label htmlFor="test">Input</Label>
+          <Input type="text" id="test" />
         </div>
         <div>
-          <Label>带占位符的输入</Label>
+          <Label>Input with Placeholder</Label>
           <Input type="text" placeholder="info@gmail.com" />
         </div>
         <div>
-          <Label>选择输入</Label>
-          <div className="relative">
-            <Select
+          <Label>Select Input</Label>
+          <Select
             options={options}
-            placeholder="选择一个选项"
+            placeholder="Select an option"
             onChange={handleSelectChange}
             className="dark:bg-dark-900"
           />
-             <span className="absolute text-gray-500 -translate-y-1/2 pointer-events-none right-3 top-1/2 dark:text-gray-400">
-              <ChevronDownIcon/>
-            </span>
-          </div>
         </div>
         <div>
-          <Label>密码输入</Label>
+          <Label htmlFor="pass">Password Input</Label>
           <div className="relative">
             <Input
+              id="pass"
               type={showPassword ? "text" : "password"}
-              placeholder="输入您的密码"
+              placeholder="Enter your password"
             />
             <button
               onClick={() => setShowPassword(!showPassword)}
@@ -65,8 +62,8 @@ export default function DefaultInputs() {
         <div>
           <DatePicker
             id="date-picker"
-            label="日期选择器输入"
-            placeholder="选择一个日期"
+            label="Date Picker Input"
+            placeholder="Select a date"
             onChange={(dates, currentDateString) => {
               // Handle your logic
               console.log({ dates, currentDateString });
@@ -75,7 +72,7 @@ export default function DefaultInputs() {
         </div>
 
         <div>
-          <Label htmlFor="tm">时间选择器输入</Label>
+          <Label htmlFor="tm">Time Picker Input</Label>
           <div className="relative">
             <Input
               type="time"
@@ -89,11 +86,11 @@ export default function DefaultInputs() {
           </div>
         </div>
         <div>
-          <Label htmlFor="tm">支付输入</Label>
+          <Label htmlFor="tm">Input with Payment</Label>
           <div className="relative">
             <Input
               type="text"
-              placeholder="卡号"
+              placeholder="Card number"
               className="pl-[62px]"
             />
             <span className="absolute left-0 top-1/2 flex h-11 w-[46px] -translate-y-1/2 items-center justify-center border-r border-gray-200 dark:border-gray-800">

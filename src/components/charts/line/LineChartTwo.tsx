@@ -1,74 +1,64 @@
 "use client";
 import React from "react";
-
 import { ApexOptions } from "apexcharts";
-
 import dynamic from "next/dynamic";
 // Dynamically import the ReactApexChart component
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
 
-export default function LineChartOne() {
+export default function LineChartTwo() {
   const options: ApexOptions = {
     legend: {
-      show: false, // Hide legend
+      show: false,
       position: "top",
       horizontalAlign: "left",
     },
-    colors: ["#465FFF", "#9CB9FF"], // Define line colors
+    colors: ["#465FFF", "#9CB9FF"],
     chart: {
       fontFamily: "Outfit, sans-serif",
       height: 310,
-      width: "100%",
-      type: "line", // Set the chart type to 'line'
+      type: "area",
       toolbar: {
-        show: false, // Hide chart toolbar
+        show: false,
       },
     },
-    stroke: {
-      curve: "straight", // Define the line style (straight, smooth, or step)
-      width: [2, 2], // Line width for each dataset
-    },
-
     fill: {
-      type: "gradient",
+      type: "gradient", // Explicitly specify gradient type
       gradient: {
         opacityFrom: 0.55,
         opacityTo: 0,
       },
     },
+    stroke: {
+      curve: "smooth",
+      width: [2, 2], // Correct width as an array of numbers
+    },
     markers: {
-      size: 0, // Size of the marker points
-      strokeColors: "#fff", // Marker border color
-      strokeWidth: 2,
-      hover: {
-        size: 6, // Marker size on hover
-      },
+      size: 0,
     },
     grid: {
       xaxis: {
         lines: {
-          show: false, // Hide grid lines on x-axis
+          show: false,
         },
       },
       yaxis: {
         lines: {
-          show: true, // Show grid lines on y-axis
+          show: true,
         },
       },
     },
     dataLabels: {
-      enabled: false, // Disable data labels
+      enabled: false,
     },
     tooltip: {
-      enabled: true, // Enable tooltip
       x: {
-        format: "dd MMM yyyy", // Format for x-axis tooltip
+        format: "dd MMM yyyy",
       },
     },
     xaxis: {
-      type: "category", // Category-based x-axis
+      type: "category", // Ensure proper type for categories
       categories: [
         "Jan",
         "Feb",
@@ -84,24 +74,18 @@ export default function LineChartOne() {
         "Dec",
       ],
       axisBorder: {
-        show: false, // Hide x-axis border
+        show: false,
       },
       axisTicks: {
-        show: false, // Hide x-axis ticks
+        show: false,
       },
       tooltip: {
-        enabled: false, // Disable tooltip for x-axis points
+        enabled: false, // Correct usage for disabling tooltips
       },
     },
     yaxis: {
-      labels: {
-        style: {
-          fontSize: "12px", // Adjust font size for y-axis labels
-          colors: ["#6B7280"], // Color of the labels
-        },
-      },
       title: {
-        text: "", // Remove y-axis title
+        text: "", // Ensure no text is displayed
         style: {
           fontSize: "0px",
         },

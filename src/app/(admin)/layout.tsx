@@ -5,6 +5,7 @@ import AppHeader from "@/layout/AppHeader";
 import AppSidebar from "@/layout/AppSidebar";
 import Backdrop from "@/layout/Backdrop";
 import React from "react";
+import { usePathname } from "next/navigation";
 
 export default function AdminLayout({
   children,
@@ -12,13 +13,30 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   const { isExpanded, isHovered, isMobileOpen } = useSidebar();
+  const pathname = usePathname();
+
+  // Route-specific styles for the main content container
+  const getRouteSpecificStyles = () => {
+    switch (pathname) {
+      case "/text-generator":
+        return "";
+      case "/code-generator":
+        return "";
+      case "/image-generator":
+        return "";
+      case "/video-generator":
+        return "";
+      default:
+        return "p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6";
+    }
+  };
 
   // Dynamic class for main content margin based on sidebar state
   const mainContentMargin = isMobileOpen
     ? "ml-0"
     : isExpanded || isHovered
-    ? "lg:ml-[290px]"
-    : "lg:ml-[90px]";
+    ? "xl:ml-[290px]"
+    : "xl:ml-[90px]";
 
   return (
     <div className="min-h-screen xl:flex">
@@ -32,7 +50,7 @@ export default function AdminLayout({
         {/* Header */}
         <AppHeader />
         {/* Page Content */}
-        <div className="p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6">{children}</div>
+        <div className={getRouteSpecificStyles()}>{children}</div>
       </div>
     </div>
   );

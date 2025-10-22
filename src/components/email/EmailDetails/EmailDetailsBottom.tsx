@@ -1,7 +1,9 @@
+import React from "react";
+
 export default function EmailDetailsBottom() {
   return (
     <div className="sticky bottom-0 border-t border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-[#171f2f]">
-      <div className="flex flex-col flex-wrap gap-3 sm:flex-row">
+      <div className="flex flex-wrap sm:flex-row flex-col gap-3">
         <button className="items-center  inline-flex justify-center gap-2 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-500 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
           <svg
             className="stroke-current"

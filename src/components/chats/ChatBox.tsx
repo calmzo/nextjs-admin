@@ -1,6 +1,7 @@
-import Image from "next/image";
+import React from "react";
 import ChatBoxHeader from "./ChatBoxHeader";
 import ChatBoxSendForm from "./ChatBoxSendForm";
+import Image from "next/image";
 
 interface ChatItem {
   id: number;
@@ -94,10 +95,10 @@ export default function ChatBox() {
             {!chat.isSender && (
               <div className="w-10 h-10 overflow-hidden rounded-full">
                 <Image
-                  src={chat.profileImage}
-                  alt={`${chat.name} profile`}
                   width={40}
                   height={40}
+                  src={chat.profileImage}
+                  alt={`${chat.name} profile`}
                   className="object-cover object-center w-full h-full"
                 />
               </div>
@@ -107,11 +108,11 @@ export default function ChatBox() {
               {chat.imagePreview && (
                 <div className="mb-2 w-full max-w-[270px] overflow-hidden rounded-lg">
                   <Image
+                    width={270}
+                    height={150}
                     src={chat.imagePreview}
                     alt="chat"
-                    width={270}
-                    height={180}
-                    className="object-cover"
+                    className="object-cover w-full"
                   />
                 </div>
               )}

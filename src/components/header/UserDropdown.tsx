@@ -8,10 +8,9 @@ import { DropdownItem } from "../ui/dropdown/DropdownItem";
 export default function UserDropdown() {
   const [isOpen, setIsOpen] = useState(false);
 
-function toggleDropdown(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-  e.stopPropagation();
-  setIsOpen((prev) => !prev);
-}
+  function toggleDropdown() {
+    setIsOpen(!isOpen);
+  }
 
   function closeDropdown() {
     setIsOpen(false);
@@ -19,14 +18,14 @@ function toggleDropdown(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
   return (
     <div className="relative">
       <button
-        onClick={toggleDropdown} 
-        className="flex items-center text-gray-700 dark:text-gray-400 dropdown-toggle"
+        onClick={toggleDropdown}
+        className="flex items-center dropdown-toggle text-gray-700 dark:text-gray-400 dropdown-toggle"
       >
         <span className="mr-3 overflow-hidden rounded-full h-11 w-11">
           <Image
             width={44}
             height={44}
-            src="/images/user/owner.jpg"
+            src="/images/user/owner.png"
             alt="User"
           />
         </span>
@@ -90,7 +89,7 @@ function toggleDropdown(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
                   fill=""
                 />
               </svg>
-              编辑资料
+              Edit profile
             </DropdownItem>
           </li>
           <li>
@@ -115,7 +114,7 @@ function toggleDropdown(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
                   fill=""
                 />
               </svg>
-              账户设置
+              Account settings
             </DropdownItem>
           </li>
           <li>
@@ -140,7 +139,7 @@ function toggleDropdown(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
                   fill=""
                 />
               </svg>
-              支持
+              Support
             </DropdownItem>
           </li>
         </ul>
@@ -163,7 +162,7 @@ function toggleDropdown(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
               fill=""
             />
           </svg>
-          退出登录
+          Sign out
         </Link>
       </Dropdown>
     </div>

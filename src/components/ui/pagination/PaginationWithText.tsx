@@ -1,5 +1,4 @@
-"use client";
-import { useState } from "react";
+import React, { useState } from "react";
 
 interface PaginationProps {
   totalPages: number;
@@ -42,7 +41,7 @@ export default function PaginationWithText({
         pageNumbers.push(renderPageButton(i));
       }
 
-      if (currentPage < totalPages - 2) pageNumbers.push(renderEllipsis());
+      if (currentPage < totalPages - 2) pageNumbers.push(renderEllipsisTwo());
       pageNumbers.push(renderPageButton(totalPages));
     }
 
@@ -75,9 +74,16 @@ export default function PaginationWithText({
       </span>
     </li>
   );
+  const renderEllipsisTwo = () => (
+    <li key="ellipsisTwo">
+      <span className="flex items-center justify-center w-10 h-10 text-sm font-medium text-gray-700 dark:text-gray-400">
+        ...
+      </span>
+    </li>
+  );
 
   return (
-    <div className="flex items-center justify-between gap-2 px-6 py-4 sm:justify-normal">
+    <div className="flex items-center justify-between gap-8 px-6 py-4 sm:justify-normal">
       <button
         onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1}

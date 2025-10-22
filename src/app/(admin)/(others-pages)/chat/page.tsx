@@ -1,15 +1,17 @@
+import ChatBox from "@/components/chats/ChatBox";
+import ChatSidebar from "@/components/chats/ChatSidebar";
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import { Metadata } from "next";
 import React from "react";
-import ChatSidebar from "@/components/chats/ChatSidebar";
-import ChatBox from "@/components/chats/ChatBox";
 
 export const metadata: Metadata = {
-  title: "React.js Chat Dashboard | TailAdmin - React.js Admin Dashboard Template",
-  description: "This is React.js Chat Dashboard page for TailAdmin - React.js Tailwind CSS Admin Dashboard Template",
+  title: "Next.js Messages | TailAdmin - Next.js Dashboard Template",
+  description:
+    "This is Next.js Messages page for TailAdmin - Next.js Tailwind CSS Admin Dashboard Template",
+  // other metadata
 };
 
-export default function Chats() {
+export default function Chat() {
   return (
     <div>
       <PageBreadcrumb pageTitle="Chats" />
@@ -18,7 +20,6 @@ export default function Chats() {
           {/* <!-- Chat Sidebar Start --> */}
           <ChatSidebar />
           {/* <!-- Chat Sidebar End --> */}
-
           {/* <!-- Chat Box Start --> */}
           <ChatBox />
           {/* <!-- Chat Box End --> */}

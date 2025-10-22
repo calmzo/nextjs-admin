@@ -1,8 +1,16 @@
+"use client";
+import useGoBack from "@/hooks/useGoBack";
+import React from "react";
+
 export default function EmailDetailsHeader() {
+  const goBack = useGoBack();
   return (
     <div className="flex flex-col justify-between border-b border-gray-200 dark:border-gray-800 sm:flex-row">
       <div className="flex items-center justify-between w-full gap-3 px-4 py-4 sm:justify-normal">
-        <button className="flex h-10 w-full max-w-10 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-700 hover:bg-gray-100 hover:text-gray-800 dark:border-gray-800 dark:bg-white/[0.03] transition dark:text-gray-400 dark:hover:bg-white/[0.07] dark:hover:text-gray-200">
+        <button
+          onClick={goBack}
+          className="flex h-10 w-full max-w-10 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-700 hover:bg-gray-100 hover:text-gray-800 dark:border-gray-800 dark:bg-white/[0.03] transition dark:text-gray-400 dark:hover:bg-white/[0.07] dark:hover:text-gray-200"
+        >
           <svg
             width="16"
             height="16"

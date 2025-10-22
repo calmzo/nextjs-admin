@@ -4,15 +4,15 @@ import { Metadata } from "next";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Next.js 日历 | TailAdmin - Next.js 仪表板模板",
+  title: "Next.js Calender | TailAdmin - Next.js Dashboard Template",
   description:
-    "这是 TailAdmin Tailwind CSS 管理仪表板模板的 Next.js 日历页面",
+    "This is Next.js Calender page for TailAdmin  Tailwind CSS Admin Dashboard Template",
   // other metadata
 };
 export default function page() {
   return (
     <div>
-      <PageBreadcrumb pageTitle="日历" />
+      <PageBreadcrumb pageTitle="Calendar" />
       <Calendar />
     </div>
   );

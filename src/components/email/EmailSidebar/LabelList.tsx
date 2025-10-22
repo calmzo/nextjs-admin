@@ -1,6 +1,5 @@
 "use client";
-
-import { useState } from "react";
+import React, { useState } from "react";
 
 export default function LabelList() {
   const [activeItem, setActiveItem] = useState("");

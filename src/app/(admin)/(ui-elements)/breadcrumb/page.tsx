@@ -1,26 +1,28 @@
-
+import PageBreadcrumb from "@/components/common/PageBreadCrumb";
+import AngleDividerBreadCrumb from "@/components/ui/breadcrumb/AngleDividerBreadCrumb";
+import BreadCrumbWithIcon from "@/components/ui/breadcrumb/BreadCrumbWithIcon";
+import DefaultBreadCrumbExample from "@/components/ui/breadcrumb/DefaultBreadCrumbExample";
+import DottedDividerBreadcrumb from "@/components/ui/breadcrumb/DottedDividerBreadcrumb";
 import { Metadata } from "next";
 import React from "react";
-import DefaultBreadCrumbExample from "@/components/ui/breadcrumb/DefaultBreadCrumbExample";
-import BreadCrumbWithIcon from "@/components/ui/breadcrumb/BreadCrumbWithIcon";
-import AngleDividerBreadCrumb from "@/components/ui/breadcrumb/AngleDividerBreadCrumb";
-import DottedDividerBreadcrumb from "@/components/ui/breadcrumb/DottedDividerBreadcrumb";
-import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 
 export const metadata: Metadata = {
-  title: "Next.js Breadcrumb | TailAdmin - Next.js Dashboard Template",
+  title: "Next.js Breadcrumbs | TailAdmin - Next.js Dashboard Template",
   description:
-    "This is Next.js Breadcrumb page for TailAdmin - Next.js Tailwind CSS Admin Dashboard Template",
+    "This is Next.js Breadcrumbs page for TailAdmin - Next.js Tailwind CSS Admin Dashboard Template",
+  // other metadata
 };
 
-export default function BreadcrumbPage() {
+export default function Breadcrumb() {
   return (
     <div>
       <PageBreadcrumb pageTitle="Breadcrumb" />
-      <DefaultBreadCrumbExample />
+      <div className="space-y-5 sm:space-y-6">
+        <DefaultBreadCrumbExample />
         <BreadCrumbWithIcon />
         <AngleDividerBreadCrumb />
         <DottedDividerBreadcrumb />
       </div>
+    </div>
   );
 }

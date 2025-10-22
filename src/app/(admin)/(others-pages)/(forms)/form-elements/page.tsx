@@ -13,15 +13,15 @@ import { Metadata } from "next";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Next.js 表单元素 | TailAdmin - Next.js 仪表板模板",
+  title: "Next.js Form Elements | TailAdmin - Next.js Dashboard Template",
   description:
-    "这是 TailAdmin - Next.js Tailwind CSS 管理仪表板模板的表单元素页面",
+    "This is Next.js Form Elements page for TailAdmin - Next.js Tailwind CSS Admin Dashboard Template",
 };
 
 export default function FormElements() {
   return (
     <div>
-      <PageBreadcrumb pageTitle="表单元素" />
+      <PageBreadcrumb pageTitle="From Elements" />
       <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
         <div className="space-y-6">
           <DefaultInputs />

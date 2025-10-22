@@ -1,10 +1,9 @@
 "use client";
-
-import { useState } from "react";
+import React, { useState } from "react";
 import Checkbox from "../../form/input/Checkbox";
 import { Dropdown } from "../../ui/dropdown/Dropdown";
 import { DropdownItem } from "../../ui/dropdown/DropdownItem";
-import { MoreDotIcon } from "../../../icons";
+import { MoreDotIcon } from "@/icons";
 
 interface EmailHeaderProps {
   isChecked: boolean;
@@ -39,7 +38,7 @@ export default function EmailHeader({
     <div className="flex flex-col justify-between gap-3 p-4 border-b border-gray-200 dark:border-gray-800 sm:flex-row">
       <div className="flex items-center w-full gap-2">
         <div className="relative w-full sm:w-auto">
-          <button className="flex items-center justify-between w-full gap-3 p-3 border border-gray-200 rounded-lg dropdown-toggle dark:border-gray-800 sm:justify-center">
+          <button className="flex items-center dropdown-toggle justify-between w-full gap-3 p-3 border border-gray-200 rounded-lg dark:border-gray-800 sm:justify-center">
             <Checkbox checked={isChecked} onChange={onSelectAll} />
             <span
               onClick={toggleDropdown}
@@ -145,9 +144,9 @@ export default function EmailHeader({
         <div className="relative inline-block">
           <button
             onClick={toggleDropdownTwo}
-            className="dropdown-toggle flex items-center w-10 dropdown-toggle text-gray-500 justify-center  h-10 transition-colors border border-gray-200 rounded-lg max-w-10 dark:text-gray-400 hover:bg-gray-100 dark:border-white/[0.05] dark:hover:bg-gray-800"
+            className="flex items-center w-10 dropdown-toggle text-gray-500 justify-center  h-10 transition-colors border border-gray-200 rounded-lg max-w-10 dark:text-gray-400 hover:bg-gray-100 dark:border-white/[0.05] dark:hover:bg-gray-800"
           >
-            <MoreDotIcon className="text-gray-400 size-6 hover:text-gray-700 dark:hover:text-gray-300" />
+            <MoreDotIcon className="text-gray-400 dropdown-toggle  hover:text-gray-700 dark:hover:text-gray-300" />
           </button>
           <Dropdown
             isOpen={isOpenTwo}
@@ -173,7 +172,7 @@ export default function EmailHeader({
       <div className=" w-full sm:max-w-[236px]">
         <form>
           <div className="relative">
-            <span className="absolute -translate-y-1/2 pointer-events-none left-4 top-1/2">
+            <span className="absolute -translate-y-1/2 left-4 top-1/2 pointer-events-none">
               <svg
                 className="fill-gray-500 dark:fill-gray-400"
                 width="20"

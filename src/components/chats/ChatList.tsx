@@ -1,9 +1,8 @@
-"use client";
-
-import { useState } from "react";
+import React, { useState } from "react";
 import { Dropdown } from "../ui/dropdown/Dropdown";
 import { DropdownItem } from "../ui/dropdown/DropdownItem";
-import { MoreDotIcon } from "../../icons";
+import { MoreDotIcon } from "@/icons";
+import Image from "next/image";
 
 interface ChatListProps {
   isOpen: boolean;
@@ -35,9 +34,9 @@ export default function ChatList({ isOpen, onToggle }: ChatListProps) {
           </h3>
         </div>
         <div className="flex items-center gap-1">
-          <div className="relative inline-block">
-            <button onClick={toggleDropdownTwo}>
-              <MoreDotIcon className="text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 size-6" />
+          <div>
+            <button className="dropdown-toggle" onClick={toggleDropdownTwo}>
+              <MoreDotIcon className="text-gray-400 hover:text-gray-700 dark:hover:text-gray-300" />
             </button>
             <Dropdown
               isOpen={isOpenTwo}
@@ -84,8 +83,10 @@ export default function ChatList({ isOpen, onToggle }: ChatListProps) {
           {/* <!-- Chat List Item --> */}
           <div className="flex cursor-pointer items-center gap-3 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-white/[0.03]">
             <div className="relative h-12 w-full max-w-[48px] rounded-full">
-              <img
-                src="./images/user/user-18.jpg"
+              <Image
+                width={48}
+                height={48}
+                src="/images/user/user-18.jpg"
                 alt="profile"
                 className="object-cover object-center w-full h-full overflow-hidden rounded-full"
               />
@@ -109,8 +110,10 @@ export default function ChatList({ isOpen, onToggle }: ChatListProps) {
           {/* <!-- Chat List Item --> */}
           <div className="flex cursor-pointer items-center gap-3 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-white/[0.03]">
             <div className="relative h-12 w-full max-w-[48px] rounded-full">
-              <img
-                src="./images/user/user-17.jpg"
+              <Image
+                width={48}
+                height={48}
+                src="/images/user/user-17.jpg"
                 alt="profile"
                 className="object-cover object-center w-full h-full overflow-hidden rounded-full"
               />
@@ -134,8 +137,10 @@ export default function ChatList({ isOpen, onToggle }: ChatListProps) {
           {/* <!-- Chat List Item --> */}
           <div className="flex cursor-pointer items-center gap-3 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-white/[0.03]">
             <div className="relative h-12 w-full max-w-[48px] rounded-full">
-              <img
-                src="./images/user/user-19.jpg"
+              <Image
+                width={48}
+                height={48}
+                src="/images/user/user-19.jpg"
                 alt="profile"
                 className="object-cover object-center w-full h-full overflow-hidden rounded-full"
               />
@@ -159,8 +164,10 @@ export default function ChatList({ isOpen, onToggle }: ChatListProps) {
           {/* <!-- Chat List Item --> */}
           <div className="flex cursor-pointer items-center gap-3 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-white/[0.03]">
             <div className="relative h-12 w-full max-w-[48px] rounded-full">
-              <img
-                src="./images/user/user-05.jpg"
+              <Image
+                width={48}
+                height={48}
+                src="/images/user/user-05.jpg"
                 alt="profile"
                 className="object-cover object-center w-full h-full overflow-hidden rounded-full"
               />
@@ -184,8 +191,10 @@ export default function ChatList({ isOpen, onToggle }: ChatListProps) {
           {/* <!-- Chat List Item --> */}
           <div className="flex cursor-pointer items-center gap-3 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-white/[0.03]">
             <div className="relative h-12 w-full max-w-[48px] rounded-full">
-              <img
-                src="./images/user/user-20.jpg"
+              <Image
+                width={48}
+                height={48}
+                src="/images/user/user-20.jpg"
                 alt="profile"
                 className="object-cover object-center w-full h-full overflow-hidden rounded-full"
               />
@@ -209,8 +218,10 @@ export default function ChatList({ isOpen, onToggle }: ChatListProps) {
           {/* <!-- Chat List Item --> */}
           <div className="flex cursor-pointer items-center gap-3 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-white/[0.03]">
             <div className="relative h-12 w-full max-w-[48px] rounded-full">
-              <img
-                src="./images/user/user-34.jpg"
+              <Image
+                width={48}
+                height={48}
+                src="/images/user/user-34.jpg"
                 alt="profile"
                 className="object-cover object-center w-full h-full overflow-hidden rounded-full"
               />
@@ -234,8 +245,10 @@ export default function ChatList({ isOpen, onToggle }: ChatListProps) {
           {/* <!-- Chat List Item --> */}
           <div className="flex cursor-pointer items-center gap-3 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-white/[0.03]">
             <div className="relative h-12 w-full max-w-[48px] rounded-full">
-              <img
-                src="./images/user/user-35.jpg"
+              <Image
+                width={48}
+                height={48}
+                src="/images/user/user-35.jpg"
                 alt="profile"
                 className="object-cover object-center w-full h-full overflow-hidden rounded-full"
               />
@@ -259,8 +272,10 @@ export default function ChatList({ isOpen, onToggle }: ChatListProps) {
           {/* <!-- Chat List Item --> */}
           <div className="flex cursor-pointer items-center gap-3 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-white/[0.03]">
             <div className="relative h-12 w-full max-w-[48px] rounded-full">
-              <img
-                src="./images/user/user-36.jpg"
+              <Image
+                width={48}
+                height={48}
+                src="/images/user/user-36.jpg"
                 alt="profile"
                 className="object-cover object-center w-full h-full overflow-hidden rounded-full"
               />
@@ -284,8 +299,10 @@ export default function ChatList({ isOpen, onToggle }: ChatListProps) {
           {/* <!-- Chat List Item --> */}
           <div className="flex cursor-pointer items-center gap-3 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-white/[0.03]">
             <div className="relative h-12 w-full max-w-[48px] rounded-full">
-              <img
-                src="./images/user/user-37.jpg"
+              <Image
+                width={48}
+                height={48}
+                src="/images/user/user-37.jpg"
                 alt="profile"
                 className="object-cover object-center w-full h-full overflow-hidden rounded-full"
               />

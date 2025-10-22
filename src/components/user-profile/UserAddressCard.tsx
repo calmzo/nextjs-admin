@@ -19,13 +19,13 @@ export default function UserAddressCard() {
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
           <div>
             <h4 className="text-lg font-semibold text-gray-800 dark:text-white/90 lg:mb-6">
-              地址
+              Address
             </h4>
 
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-7 2xl:gap-x-32">
               <div>
                 <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
-                  国家
+                  Country
                 </p>
                 <p className="text-sm font-medium text-gray-800 dark:text-white/90">
                   United States
@@ -34,7 +34,7 @@ export default function UserAddressCard() {
 
               <div>
                 <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
-                  城市/州
+                  City/State
                 </p>
                 <p className="text-sm font-medium text-gray-800 dark:text-white/90">
                   Phoenix, Arizona, United States.
@@ -43,7 +43,7 @@ export default function UserAddressCard() {
 
               <div>
                 <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
-                  邮政编码
+                  Postal Code
                 </p>
                 <p className="text-sm font-medium text-gray-800 dark:text-white/90">
                   ERT 2489
@@ -52,7 +52,7 @@ export default function UserAddressCard() {
 
               <div>
                 <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
-                  税务ID
+                  TAX ID
                 </p>
                 <p className="text-sm font-medium text-gray-800 dark:text-white/90">
                   AS4568384
@@ -80,7 +80,7 @@ export default function UserAddressCard() {
                 fill=""
               />
             </svg>
-            编辑
+            Edit
           </button>
         </div>
       </div>
@@ -88,42 +88,42 @@ export default function UserAddressCard() {
         <div className="relative w-full p-4 overflow-y-auto bg-white no-scrollbar rounded-3xl dark:bg-gray-900 lg:p-11">
           <div className="px-2 pr-14">
             <h4 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
-              编辑地址
+              Edit Address
             </h4>
             <p className="mb-6 text-sm text-gray-500 dark:text-gray-400 lg:mb-7">
-              更新您的详细信息以保持个人资料最新。
+              Update your details to keep your profile up-to-date.
             </p>
           </div>
           <form className="flex flex-col">
             <div className="px-2 overflow-y-auto custom-scrollbar">
               <div className="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2">
                 <div>
-                  <Label>国家</Label>
+                  <Label>Country</Label>
                   <Input type="text" defaultValue="United States" />
                 </div>
 
                 <div>
-                  <Label>城市/州</Label>
+                  <Label>City/State</Label>
                   <Input type="text" defaultValue="Arizona, United States." />
                 </div>
 
                 <div>
-                  <Label>邮政编码</Label>
+                  <Label>Postal Code</Label>
                   <Input type="text" defaultValue="ERT 2489" />
                 </div>
 
                 <div>
-                  <Label>税务ID</Label>
+                  <Label>TAX ID</Label>
                   <Input type="text" defaultValue="AS4568384" />
                 </div>
               </div>
             </div>
             <div className="flex items-center gap-3 px-2 mt-6 lg:justify-end">
               <Button size="sm" variant="outline" onClick={closeModal}>
-                关闭
+                Close
               </Button>
               <Button size="sm" onClick={handleSave}>
-                保存更改
+                Save Changes
               </Button>
             </div>
           </form>
