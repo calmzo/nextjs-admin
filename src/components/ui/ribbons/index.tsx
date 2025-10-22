@@ -1,3 +1,4 @@
+import React from "react";
 import ComponentCard from "../../common/ComponentCard";
 import RoundedRibbon from "./RoundedRibbon";
 import RibbonWithHover from "./RibbonWithHover";

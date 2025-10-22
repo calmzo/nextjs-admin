@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function RibbonWithHover() {
   return (
     <div className="group relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 dark:bg-white/[0.03]">
