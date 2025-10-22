@@ -49,14 +49,22 @@ import DocsIcon from "./docs.svg";
 import MailIcon from "./mail-line.svg";
 import HorizontaLDots from "./horizontal-dots.svg";
 import ChatIcon from "./chat.svg";
-import MoreDotIcon from "./more-dot.svg";
-import BellIcon from "./bell.svg";
-import AlertHexaIcon from "./alert-hexa.svg";
-import ErrorHexaIcon from "./info-hexa.svg";
+import MoreDotIcon from "./MoreDotIcon.svg";
+import AiIcon from "./ai-icon.svg";
+import CartIcon from "./cart-icon.svg";
+import CallIcon from "./call-icon.svg";
+import BoxMoving from "./box-tapped.svg";
+import BoxTapped from "./box-icon.svg";
+import TruckDelivery from "./truck-delivery.svg";
+
 export {
+  BoxTapped,
+  TruckDelivery,
+  BoxMoving,
+  CallIcon,
+  CartIcon,
+  AiIcon,
   DownloadIcon,
-  BellIcon,
-  MoreDotIcon,
   FileIcon,
   GridIcon,
   AudioIcon,
@@ -107,6 +115,5 @@ export {
   HorizontaLDots,
   ChevronUpIcon,
   ChatIcon,
-  AlertHexaIcon,
-  ErrorHexaIcon,
+  MoreDotIcon,
 };
