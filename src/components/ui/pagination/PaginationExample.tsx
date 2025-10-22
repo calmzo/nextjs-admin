@@ -1,8 +1,9 @@
 "use client";
+import React from "react";
+import PaginationWithText from "@/components/ui/pagination/PaginationWithText";
+import PaginationWithTextWithIcon from "@/components/ui/pagination/PaginationWithTextWitIcon";
+import PaginationWithIcon from "@/components/ui/pagination/PaginationWithIcon";
 import ComponentCard from "@/components/common/ComponentCard";
-import PaginationWithIcon from "./PaginationWithIcon";
-import PaginationWithTextAndIcon from "./PaginationWithTextAndIcon";
-import PaginationWithText from "./PaginationWithText";
 
 export default function PaginationExample() {
   const handlePageChange = (page: number) => {
@@ -19,10 +20,18 @@ export default function PaginationExample() {
         />
       </ComponentCard>
       <ComponentCard title="Pagination with Text and Icon">
-        <PaginationWithTextAndIcon />
+        <PaginationWithTextWithIcon
+          totalPages={10}
+          initialPage={1}
+          onPageChange={handlePageChange}
+        />
       </ComponentCard>
-      <ComponentCard title="Pagination with Icon">
-        <PaginationWithIcon />
+      <ComponentCard title="Pagination with  Icon">
+        <PaginationWithIcon
+          totalPages={10}
+          initialPage={1}
+          onPageChange={handlePageChange}
+        />
       </ComponentCard>
     </div>
   );
