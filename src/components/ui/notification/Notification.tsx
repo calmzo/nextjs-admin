@@ -1,12 +1,12 @@
 "use client";
-import { useState } from "react";
+import React, { useState } from "react";
 import {
-  AlertHexaIcon,
+  AlertIcon,
   CheckCircleIcon,
   CloseIcon,
-  ErrorHexaIcon,
+  ErrorIcon,
   InfoIcon,
-} from "@/icons";
+} from "../../../icons";
 
 interface NotificationProps {
   variant: "success" | "info" | "warning" | "error"; // Notification type
@@ -38,12 +38,12 @@ const Notification: React.FC<NotificationProps> = ({
     warning: {
       borderColor: "border-warning-500",
       iconBg: "bg-warning-50 text-warning-500",
-      icon: <AlertHexaIcon />,
+      icon: <AlertIcon />,
     },
     error: {
       borderColor: "border-error-500",
       iconBg: "bg-error-50 text-error-500",
-      icon: <ErrorHexaIcon className="size-5" />,
+      icon: <ErrorIcon />,
     },
   };
 
@@ -68,7 +68,7 @@ const Notification: React.FC<NotificationProps> = ({
       <div className="flex items-center gap-4">
         {/* Icon */}
         <div
-          className={`flex items-center  justify-center w-10 h-10 rounded-lg ${iconBg}`}
+          className={`flex items-center justify-center w-10 h-10 rounded-lg ${iconBg}`}
         >
           {icon}
         </div>
