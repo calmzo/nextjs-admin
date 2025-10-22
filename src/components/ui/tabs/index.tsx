@@ -1,3 +1,4 @@
+import React from "react";
 import ComponentCard from "../../common/ComponentCard";
 import DefaultTab from "./DefaultTab";
 import TabWithUnderline from "./TabWithUnderline";

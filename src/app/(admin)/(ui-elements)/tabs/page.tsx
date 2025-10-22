@@ -1,20 +1,29 @@
-
-import { Metadata } from "next";
 import React from "react";
-import PageBreadcrumb from "@/components/common/PageBreadCrumb";
-import TabExample from "@/components/ui/tabs";
+import ComponentCard from "@/components/common/ComponentCard";
+import DefaultTab from "./DefaultTab";
+import TabWithUnderline from "./TabWithUnderline";
+import TabWithUnderlineAndIcon from "./TabWithUnderlineAndIcon";
+import TabWithBadge from "./TabWithBadge";
+import VerticalTabs from "./VerticalTabs";
 
-export const metadata: Metadata = {
-  title: "Next.js Tags | TailAdmin - Next.js Dashboard Template",
-  description:
-    "This is Next.js Tags page for TailAdmin - Next.js Tailwind CSS Admin Dashboard Template",
-};
-
-export default function TagsPage() {
+export default function TabExample() {
   return (
-    <div>
-      <PageBreadcrumb pageTitle="Tags" />
-      <TabExample />   
+    <div className="space-y-5 sm:space-y-6">
+      <ComponentCard title="Default Tab">
+        <DefaultTab />
+      </ComponentCard>
+      <ComponentCard title="Tab With Underline">
+        <TabWithUnderline />
+      </ComponentCard>
+      <ComponentCard title="Tab with line and icon">
+        <TabWithUnderlineAndIcon />
+      </ComponentCard>
+      <ComponentCard title="Tab with badge">
+        <TabWithBadge />
+      </ComponentCard>
+      <ComponentCard title="Vertical Tab">
+        <VerticalTabs />
+      </ComponentCard>
     </div>
   );
 }
