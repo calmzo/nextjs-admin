@@ -1,7 +1,12 @@
 "use client";
-
-import Chart from "react-apexcharts";
+import React from "react";
 import { ApexOptions } from "apexcharts";
+
+import dynamic from "next/dynamic";
+// Dynamically import the ReactApexChart component
+const ReactApexChart = dynamic(() => import("react-apexcharts"), {
+  ssr: false,
+});
 
 export default function PieChartOne() {
   const options: ApexOptions = {
@@ -87,7 +92,12 @@ export default function PieChartOne() {
   return (
     <div className="flex justify-center">
       <div id="chartDarkStyle">
-        <Chart options={options} series={series} type="donut" height={290} />
+        <ReactApexChart
+          options={options}
+          series={series}
+          type="donut"
+          height={290}
+        />
       </div>
     </div>
   );
