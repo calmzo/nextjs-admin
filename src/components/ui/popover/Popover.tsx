@@ -1,5 +1,6 @@
 "use client";
-import { useState, useRef, useEffect, ReactNode } from "react";
+
+import React, { useState, useRef, useEffect, ReactNode } from "react";
 
 type Position = "top" | "right" | "bottom" | "left";
 

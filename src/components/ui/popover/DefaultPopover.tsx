@@ -1,3 +1,5 @@
+"use client";
+import React from "react";
 import Popover from "./Popover";
 import Button from "../button/Button";
 
@@ -23,7 +25,7 @@ export default function DefaultPopover() {
                 </p>
               </div>
             </Popover>
-          </div>
+          </div>{" "}
           <div>
             <Popover
               position="bottom"
@@ -41,7 +43,7 @@ export default function DefaultPopover() {
                 </p>
               </div>
             </Popover>
-          </div>
+          </div>{" "}
           <div>
             <Popover
               position="right"
@@ -59,7 +61,7 @@ export default function DefaultPopover() {
                 </p>
               </div>
             </Popover>
-          </div>
+          </div>{" "}
           <div>
             <Popover
               position="left"
