@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function SecondaryButtonGroupWithLeftIcon() {
   return (
     <div className="max-w-full pb-3 overflow-x-auto custom-scrollbar sm:pb-0">
