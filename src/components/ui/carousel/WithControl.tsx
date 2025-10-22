@@ -1,8 +1,8 @@
 "use client";
+import Image from "next/image";
+import React from "react";
 import { Navigation, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
 
 const carouselData = [
   {
@@ -27,8 +27,8 @@ export default function WithControl() {
       disableOnInteraction: false,
     },
     navigation: {
-      nextEl: ".swiper-button-next.next-style-one",
-      prevEl: ".swiper-button-prev.prev-style-one",
+      nextEl: ".next-style-one.swiper-button-next",
+      prevEl: ".prev-style-one.swiper-button-prev",
     },
   };
   return (
@@ -38,7 +38,9 @@ export default function WithControl() {
         {carouselData.map((item, i) => (
           <SwiperSlide key={i + 1}>
             <div className="overflow-hidden rounded-lg">
-              <img
+              <Image
+                width={487}
+                height={297}
                 src={item.thumbnail}
                 className="w-full rounded-lg"
                 alt="carousel"

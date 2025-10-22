@@ -1,8 +1,8 @@
 "use client";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
+import Image from "next/image";
 const carouselData = [
   {
     thumbnail: "/images/carousel/carousel-01.png",
@@ -36,7 +36,9 @@ export default function WithIndicators() {
         {carouselData.map((item, i) => (
           <SwiperSlide key={i + 1}>
             <div className="overflow-hidden rounded-lg">
-              <img
+              <Image
+                width={487}
+                height={297}
                 src={item.thumbnail}
                 className="w-full rounded-lg"
                 alt="carousel"
