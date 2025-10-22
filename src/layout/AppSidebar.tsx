@@ -108,7 +108,7 @@ const othersItems: NavItem[] = [
       { name: "Carousel", path: "/carousel", pro: true },
       { name: "Dropdowns", path: "/dropdowns", pro: true },
       { name: "Links", path: "/links", pro: true },
-      { name: "Lists", path: "/lists", pro: true },
+      { name: "List", path: "/list", pro: true },
       { name: "Notifications", path: "/notifications", pro: true },
       { name: "Pagination", path: "/pagination", pro: true },
       { name: "Popovers", path: "/popovers", pro: true },
