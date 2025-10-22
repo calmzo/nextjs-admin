@@ -1,7 +1,7 @@
 "use client";
+import { Dropdown } from "@/components/ui/dropdown/Dropdown";
+import { DropdownItem } from "@/components/ui/dropdown/DropdownItem";
 import React, { useState } from "react";
-import { Dropdown } from "./Dropdown";
-import { DropdownItem } from "./DropdownItem";
 
 export default function DropdownWithIconAndDivider() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +17,7 @@ export default function DropdownWithIconAndDivider() {
     <div className="relative inline-block">
       <button
         onClick={toggleDropdown}
-        className="inline-flex items-center gap-2 px-4 py-3 text-sm font-medium text-white rounded-lg dropdown-toggle bg-brand-500 hover:bg-brand-600"
+        className="inline-flex items-center dropdown-toggle gap-2 px-4 py-3 text-sm font-medium text-white rounded-lg bg-brand-500 hover:bg-brand-600"
       >
         Account Menu
         <svg

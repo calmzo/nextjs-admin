@@ -1,19 +1,20 @@
 import ComponentCard from "@/components/common/ComponentCard";
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
+import AccountMenuDropdown from "@/components/example/DropdownExample/AccountMenuDropdown";
+import DropdownWithDivider from "@/components/example/DropdownExample/DropdownWithDivider";
+import DropdownWithIcon from "@/components/example/DropdownExample/DropdownWithIcon";
+import DropdownWithIconAndDivider from "@/components/example/DropdownExample/DropdownWithIconAndDivider";
 import { Metadata } from "next";
 import React from "react";
-import AccountMenuDropdown from "@/components/ui/dropdown/AccountMenuDropdown";
-import DropdownWithDivider from "@/components/ui/dropdown/DropdownWithDivider";
-import DropdownWithIcon from "@/components/ui/dropdown/DropdownWithIcon";
-import DropdownWithIconAndDivider from "@/components/ui/dropdown/DropdownWithIconAndDivider";
 
 export const metadata: Metadata = {
-  title: "Next.js Buttons | TailAdmin - Next.js Dashboard Template",
+  title: "Next.js Dropdowns | TailAdmin - Next.js Dashboard Template",
   description:
-    "This is Next.js Buttons page for TailAdmin - Next.js Tailwind CSS Admin Dashboard Template",
+    "This is Next.js Dropdowns page for TailAdmin - Next.js Tailwind CSS Admin Dashboard Template",
+  // other metadata
 };
 
-export default function Buttons() {
+export default function Dropdowns() {
   return (
     <div>
       <PageBreadcrumb pageTitle="Dropdowns" />
@@ -22,17 +23,17 @@ export default function Buttons() {
           <div className="pb-[300px]">
             <AccountMenuDropdown />
           </div>
-        </ComponentCard>
+        </ComponentCard>{" "}
         <ComponentCard title="Dropdown With Divider">
           <div className="pb-[300px]">
             <DropdownWithDivider />
           </div>
-        </ComponentCard>
+        </ComponentCard>{" "}
         <ComponentCard title="Dropdown With Icon">
           <div className="pb-[300px]">
             <DropdownWithIcon />
           </div>
-        </ComponentCard>
+        </ComponentCard>{" "}
         <ComponentCard title="Dropdown With Icon and Divider">
           <div className="pb-[300px]">
             <DropdownWithIconAndDivider />
