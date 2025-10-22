@@ -1,37 +1,92 @@
-# TailAdmin Next.js - 免费 Next.js Tailwind 管理后台模板
+# TailAdmin Next.js - 企业级管理后台模板
 
-TailAdmin 是一个基于 **Next.js 和 Tailwind CSS** 构建的免费开源管理后台模板，为开发者提供了创建功能丰富、数据驱动的后端、仪表板或管理面板解决方案所需的一切。
+TailAdmin 是一个基于 Next.js 15 和 Tailwind CSS 构建的现代化企业级管理后台模板，提供完整的仪表板解决方案和丰富的业务组件。
 
 ![TailAdmin - Next.js 仪表板预览](./banner.png)
 
-通过 TailAdmin Next.js，您可以访问构建高质量完整仪表板或管理面板所需的所有必要仪表板 UI 组件、元素和页面。无论您是为复杂的 Web 应用程序还是简单的网站构建仪表板或管理面板。
+## 1. 项目概述
 
-TailAdmin 利用 **Next.js 15** 的强大功能和 Next.js 的常见功能，如服务器端渲染 (SSR)、静态站点生成 (SSG) 和无缝 API 路由集成。结合 **React 19** 的进步和 **TypeScript** 的健壮性，TailAdmin 是帮助您快速启动项目的完美解决方案。
+TailAdmin 是一个功能完整的企业级管理后台模板，集成了多种业务场景的仪表板设计。项目采用现代化的技术栈，提供响应式设计、暗色模式支持、可折叠侧边栏等企业级特性。
 
-## 项目概述
+### 核心功能
+- **多场景仪表板**：电商、分析、营销、CRM、股票、SaaS、物流等7种业务场景
+- **AI 功能模块**：文本生成、代码生成、图像生成、视频生成等AI工具
+- **完整业务组件**：用户管理、订单处理、产品管理、发票系统、任务管理
+- **数据可视化**：基于 ApexCharts 的图表组件，支持线图、柱状图、饼图
+- **响应式设计**：完全适配移动端和桌面端，支持暗色/亮色主题切换
+- **现代化交互**：拖拽功能、实时聊天、日历管理、文件管理器
 
-TailAdmin 为构建功能丰富、数据驱动的管理仪表板和控制面板提供了必要的 UI 组件和布局。它基于：
+## 2. 技术栈
 
-- Next.js 15.x
-- React 19
-- TypeScript
-- Tailwind CSS V4
+### 前端框架
+- **Next.js 15**：基于 React 的全栈框架，支持 App Router 和 React Server Components
+- **React 19**：最新的 React 版本，提供更好的性能和开发体验
+- **TypeScript**：提供完整的类型安全和更好的开发体验
+
+### 样式和UI
+- **Tailwind CSS 4.0**：实用优先的 CSS 框架，提供响应式设计和暗色模式支持
+- **自定义组件库**：基于 Tailwind CSS 构建的完整 UI 组件系统
+
+### 数据可视化
+- **ApexCharts**：强大的图表库，支持多种图表类型
+- **React ApexCharts**：React 版本的 ApexCharts 集成
+
+### 功能增强
+- **FullCalendar**：完整的日历组件，支持事件管理
+- **React DnD**：拖拽功能支持，用于任务管理和文件操作
+- **React Dropzone**：文件上传和拖拽功能
+- **Swiper**：现代化的轮播和滑动组件
+
+### 开发工具
+- **ESLint**：代码质量检查
+- **Prettier**：代码格式化
+- **PostCSS**：CSS 后处理器
+- **SVGR**：SVG 图标处理
 
 ### 快速链接
-- [✨ 访问网站](https://tailadmin.com)
-- [📄 文档](https://tailadmin.com/docs)
-- [⬇️ 下载](https://tailadmin.com/download)
-- [🖌️ Figma 设计文件（社区版）](https://www.figma.com/community/file/1463141366275764364)
-- [⚡ 获取专业版](https://tailadmin.com/pricing)
+- [访问网站](https://tailadmin.com)
+- [文档](https://tailadmin.com/docs)
+- [下载](https://tailadmin.com/download)
+- [Figma 设计文件](https://www.figma.com/community/file/1463141366275764364)
+- [获取专业版](https://tailadmin.com/pricing)
 
 ### 演示
 - [免费版本](https://nextjs-free-demo.tailadmin.com)
 - [专业版本](https://nextjs-demo.tailadmin.com)
 
-### 其他版本
-- [HTML 版本](https://github.com/TailAdmin/tailadmin-free-tailwind-dashboard-template)
-- [React 版本](https://github.com/TailAdmin/free-react-tailwind-admin-dashboard)
-- [Vue.js 版本](https://github.com/TailAdmin/vue-tailwind-admin-dashboard)
+## 3. 项目架构
+
+### 整体架构设计
+项目采用 Next.js 15 的 App Router 架构，基于 React Server Components 和客户端组件的混合模式。整体架构分为以下几个层次：
+
+#### 路由层 (App Router)
+- **管理后台路由组** `(admin)`：包含所有管理功能页面
+- **全宽页面路由组** `(full-width-pages)`：包含认证、错误页面等
+- **嵌套路由结构**：支持多级路由和布局嵌套
+
+#### 组件层 (Components)
+- **业务组件**：按功能模块组织的业务逻辑组件
+- **UI 组件**：可复用的基础 UI 组件
+- **布局组件**：页面布局和导航组件
+
+#### 状态管理层 (Context)
+- **主题管理**：全局主题状态和切换逻辑
+- **侧边栏管理**：侧边栏展开/收起状态管理
+
+#### 工具层 (Utils)
+- **样式工具**：Tailwind CSS 类名合并和条件样式处理
+- **自定义 Hooks**：可复用的业务逻辑封装
+
+### 数据流向
+1. **服务端渲染**：页面初始数据通过 Next.js SSR 获取
+2. **客户端状态**：用户交互状态通过 React Context 管理
+3. **组件通信**：通过 Props 和 Context 进行组件间数据传递
+4. **样式管理**：通过 Tailwind CSS 和自定义工具函数处理样式
+
+### 模块关系
+- **布局模块**：提供统一的页面布局和导航结构
+- **业务模块**：独立的业务功能模块，可单独开发和维护
+- **共享模块**：通用的组件和工具，供各业务模块使用
 
 ## 安装
 
@@ -64,143 +119,182 @@ git clone https://github.com/TailAdmin/free-nextjs-admin-dashboard.git
     yarn dev
     ```
 
-## 项目结构
+## 4. 目录结构
 
 ```
 nextjs-admin/
 ├── src/
-│   ├── app/                    # Next.js 15 App Router 页面
-│   │   ├── (admin)/           # 管理后台页面组
-│   │   │   ├── (others-pages)/ # 其他页面（图表、表单、表格等）
-│   │   │   ├── (ui-elements)/  # UI 元素页面
-│   │   │   ├── layout.tsx      # 管理后台布局
-│   │   │   └── page.tsx        # 仪表板首页
-│   │   ├── (full-width-pages)/ # 全宽页面组
-│   │   │   ├── (auth)/         # 认证页面
-│   │   │   └── (error-pages)/  # 错误页面
-│   │   ├── layout.tsx          # 根布局
-│   │   └── globals.css         # 全局样式
-│   ├── components/             # React 组件
-│   │   ├── auth/              # 认证组件
-│   │   ├── calendar/          # 日历组件
-│   │   ├── charts/            # 图表组件
-│   │   ├── common/            # 通用组件
-│   │   ├── ecommerce/         # 电商组件
-│   │   ├── form/              # 表单组件
-│   │   ├── header/            # 头部组件
-│   │   ├── layout/            # 布局组件
-│   │   ├── tables/            # 表格组件
-│   │   ├── ui/                # UI 组件
-│   │   └── user-profile/      # 用户资料组件
-│   ├── context/               # React Context
-│   ├── hooks/                 # 自定义 Hooks
-│   ├── icons/                 # SVG 图标
-│   └── layout/                # 布局组件
-├── public/                    # 静态资源
-├── package.json              # 项目配置
-├── next.config.ts           # Next.js 配置
-├── tailwind.config.ts       # Tailwind CSS 配置
-└── tsconfig.json           # TypeScript 配置
+│   ├── app/                           # Next.js 15 App Router 页面
+│   │   ├── (admin)/                   # 管理后台页面组
+│   │   │   ├── (home)/                # 仪表板页面组
+│   │   │   │   ├── analytics/         # 分析仪表板
+│   │   │   │   ├── crm/              # CRM 仪表板
+│   │   │   │   ├── logistics/        # 物流仪表板
+│   │   │   │   ├── marketing/        # 营销仪表板
+│   │   │   │   ├── saas/             # SaaS 仪表板
+│   │   │   │   └── stocks/           # 股票仪表板
+│   │   │   ├── (others-pages)/       # 其他功能页面
+│   │   │   │   ├── (ai)/             # AI 功能模块
+│   │   │   │   │   ├── code-generator/    # 代码生成器
+│   │   │   │   │   ├── image-generator/   # 图像生成器
+│   │   │   │   │   ├── text-generator/    # 文本生成器
+│   │   │   │   │   └── video-generator/   # 视频生成器
+│   │   │   │   ├── (chart)/          # 图表页面
+│   │   │   │   ├── (ecommerce)/      # 电商功能页面
+│   │   │   │   ├── (email)/          # 邮件功能页面
+│   │   │   │   ├── (forms)/          # 表单页面
+│   │   │   │   ├── (support)/        # 支持页面
+│   │   │   │   ├── (tables)/         # 表格页面
+│   │   │   │   └── (task)/           # 任务管理页面
+│   │   │   ├── (ui-elements)/        # UI 元素展示页面
+│   │   │   ├── layout.tsx            # 管理后台布局
+│   │   │   └── page.tsx              # 默认仪表板首页
+│   │   ├── (full-width-pages)/       # 全宽页面组
+│   │   │   ├── (auth)/               # 认证页面组
+│   │   │   │   ├── signin/           # 登录页面
+│   │   │   │   ├── signup/           # 注册页面
+│   │   │   │   ├── reset-password/   # 重置密码
+│   │   │   │   └── two-step-verification/ # 两步验证
+│   │   │   ├── (error-pages)/        # 错误页面组
+│   │   │   │   ├── error-404/        # 404 错误页面
+│   │   │   │   ├── error-500/        # 500 错误页面
+│   │   │   │   ├── error-503/        # 503 错误页面
+│   │   │   │   └── maintenance/      # 维护页面
+│   │   │   ├── coming-soon/          # 即将上线页面
+│   │   │   └── success/              # 成功页面
+│   │   ├── layout.tsx                # 根布局组件
+│   │   ├── globals.css               # 全局样式文件
+│   │   ├── not-found.tsx             # 404 页面
+│   │   └── favicon.ico               # 网站图标
+│   ├── components/                   # React 组件库
+│   │   ├── ai/                       # AI 功能组件
+│   │   ├── analytics/                # 分析组件
+│   │   ├── auth/                     # 认证相关组件
+│   │   ├── calendar/                 # 日历组件
+│   │   ├── cards/                    # 卡片组件
+│   │   ├── charts/                   # 图表组件
+│   │   ├── chats/                    # 聊天组件
+│   │   ├── common/                   # 通用组件
+│   │   ├── crm/                      # CRM 业务组件
+│   │   ├── ecommerce/                # 电商业务组件
+│   │   ├── email/                    # 邮件组件
+│   │   ├── form/                     # 表单组件
+│   │   ├── header/                   # 头部组件
+│   │   ├── layout/                   # 布局组件
+│   │   ├── tables/                   # 表格组件
+│   │   ├── task/                     # 任务管理组件
+│   │   ├── ui/                       # 基础 UI 组件
+│   │   └── user-profile/             # 用户资料组件
+│   ├── context/                      # React Context 状态管理
+│   │   ├── SidebarContext.tsx        # 侧边栏状态管理
+│   │   └── ThemeContext.tsx          # 主题状态管理
+│   ├── hooks/                        # 自定义 React Hooks
+│   │   ├── useGoBack.ts              # 返回功能 Hook
+│   │   └── useModal.ts               # 模态框管理 Hook
+│   ├── icons/                        # SVG 图标库
+│   │   └── index.tsx                 # 图标导出文件
+│   ├── layout/                       # 布局相关组件
+│   │   ├── AppHeader.tsx             # 应用头部
+│   │   ├── AppSidebar.tsx            # 应用侧边栏
+│   │   ├── Backdrop.tsx              # 背景遮罩
+│   │   └── SidebarWidget.tsx         # 侧边栏小部件
+│   ├── utils/                        # 工具函数
+│   │   └── index.ts                  # 样式工具函数
+│   └── svg.d.ts                      # SVG 类型声明
+├── public/                           # 静态资源目录
+│   └── images/                       # 图片资源
+├── package.json                      # 项目依赖配置
+├── next.config.ts                    # Next.js 配置文件
+├── tsconfig.json                     # TypeScript 配置
+├── eslint.config.mjs                 # ESLint 配置
+├── prettier.config.js                # Prettier 配置
+└── postcss.config.mjs                # PostCSS 配置
 ```
 
-## 主要功能
+## 5. 核心文件说明
 
-### 仪表板功能
-- **电商仪表板**：包含销售指标、月度目标、销售图表、统计图表、最近订单和人口统计卡片
-- **响应式设计**：完全响应式，支持移动端和桌面端
-- **暗色模式**：内置暗色/亮色主题切换
-- **可折叠侧边栏**：支持展开/收起和悬停展开
+### 项目入口文件和配置文件
 
-### 页面和组件
-- **认证页面**：登录和注册页面
-- **用户资料**：用户信息管理页面
-- **日历**：FullCalendar 集成的日历功能
-- **图表**：基于 ApexCharts 的线图和柱状图
-- **表格**：基础表格和分页功能
-- **表单**：丰富的表单元素和验证
-- **UI 元素**：按钮、徽章、头像、图片、视频、模态框等
+#### `src/app/layout.tsx`
+- **作用**：根布局组件，提供全局的 HTML 结构和 Context 提供者
+- **功能**：集成主题提供者、侧边栏提供者，设置全局字体和样式
+- **关键特性**：支持暗色模式、响应式设计
 
-### 技术特性
-- **Next.js 15**：使用最新的 App Router 和 React Server Components
-- **React 19**：最新的 React 特性
-- **TypeScript**：完整的类型安全
-- **Tailwind CSS V4**：最新的实用优先 CSS 框架
-- **ApexCharts**：强大的图表库
-- **FullCalendar**：功能完整的日历组件
-- **React DnD**：拖拽功能支持
+#### `src/app/(admin)/layout.tsx`
+- **作用**：管理后台布局组件，提供统一的页面布局结构
+- **功能**：管理侧边栏状态、头部导航、主内容区域布局
+- **关键特性**：响应式侧边栏、动态内容边距、路由特定样式
 
-## 组件说明
+#### `next.config.ts`
+- **作用**：Next.js 配置文件
+- **功能**：配置 SVG 处理、Webpack 设置
+- **关键特性**：支持 SVG 作为 React 组件导入
 
-TailAdmin 是一个使用 Next.js 和 Tailwind CSS 构建基于 Web 的仪表板的预设计起点。模板包括：
+#### `tsconfig.json`
+- **作用**：TypeScript 配置文件
+- **功能**：设置编译选项、路径映射、类型检查规则
+- **关键特性**：支持路径别名 `@/*` 映射到 `./src/*`
 
-- 复杂且可访问的侧边栏
-- 数据可视化组件
-- 个人资料管理和自定义 404 页面
-- 表格和图表（线图和柱状图）
-- 认证表单和输入元素
-- 警告、下拉菜单、模态框、按钮等
-- 暗色模式支持 🕶️
+### 核心业务逻辑实现
 
-所有组件都使用 React 构建，并使用 Tailwind CSS 进行样式设置，便于自定义。
+#### `src/context/ThemeContext.tsx`
+- **作用**：全局主题状态管理
+- **功能**：提供主题切换、本地存储持久化、DOM 类名管理
+- **关键特性**：支持亮色/暗色主题切换，自动保存用户偏好
 
-## 功能对比
+#### `src/context/SidebarContext.tsx`
+- **作用**：侧边栏状态管理
+- **功能**：管理侧边栏展开/收起、悬停状态、移动端显示
+- **关键特性**：响应式侧边栏行为，支持多种交互模式
 
-### 免费版本
-- 1 个独特仪表板
-- 30+ 仪表板组件
-- 50+ UI 元素
-- 基础 Figma 设计文件
-- 社区支持
+#### `src/layout/AppSidebar.tsx`
+- **作用**：应用侧边栏组件
+- **功能**：提供导航菜单、用户信息、小部件展示
+- **关键特性**：多级菜单结构、图标集成、权限控制
 
-### 专业版本
-- 5 个独特仪表板：分析、电商、营销、CRM、股票（更多即将推出）
-- 400+ 仪表板组件和 UI 元素
-- 完整 Figma 设计文件
-- 邮件支持
+#### `src/layout/AppHeader.tsx`
+- **作用**：应用头部组件
+- **功能**：提供搜索、通知、用户菜单、主题切换
+- **关键特性**：响应式设计、用户交互、状态同步
 
-要了解更多专业版本功能和定价，请访问我们的[定价页面](https://tailadmin.com/pricing)。
+### 数据模型和API接口
 
-## 更新日志
+#### `src/components/ecommerce/EcommerceMetrics.tsx`
+- **作用**：电商指标展示组件
+- **功能**：显示客户数量、订单统计、收入数据等关键指标
+- **关键特性**：数据可视化、趋势分析、响应式布局
 
-### 版本 2.0.2 - [2025年3月25日]
+#### `src/components/charts/`
+- **作用**：图表组件库
+- **功能**：提供线图、柱状图、饼图等多种图表类型
+- **关键特性**：基于 ApexCharts、支持交互、主题适配
 
-- 升级到 Next v15.2.3 以解决 [CVE-2025-29927](https://nextjs.org/blog/cve-2025-29927) 问题
-- 包含 vectormap 包的覆盖配置以防止安装过程中的对等依赖错误
-- 为支持 React 19，从 react-flatpickr 迁移到 flatpickr 包
+#### `src/components/tables/`
+- **作用**：表格组件库
+- **功能**：提供基础表格、数据表格、分页等功能
+- **关键特性**：排序、筛选、分页、响应式设计
 
-### 版本 2.0.1 - [2025年2月27日]
+### 关键组件和服务模块
 
-#### 更新概述
+#### `src/utils/index.ts`
+- **作用**：工具函数库
+- **功能**：提供样式类名合并、条件样式处理
+- **关键特性**：基于 clsx 和 tailwind-merge，支持条件样式
 
-- 升级到 Tailwind CSS v4 以获得更好的性能和效率
-- 更新类使用以匹配最新的语法和功能
-- 替换已弃用的类并优化样式
+#### `src/hooks/useModal.ts`
+- **作用**：模态框管理 Hook
+- **功能**：提供模态框状态管理、打开/关闭逻辑
+- **关键特性**：可复用、类型安全、状态管理
 
-#### 下一步
+#### `src/hooks/useGoBack.ts`
+- **作用**：返回功能 Hook
+- **功能**：提供页面返回逻辑、历史记录管理
+- **关键特性**：浏览器历史集成、用户友好
 
-- 运行 npm install 或 yarn install 更新依赖
-- 检查任何样式更改或兼容性问题
-- 如需要，请参考 Tailwind CSS v4 [迁移指南](https://tailwindcss.com/docs/upgrade-guide)
-- 此更新使项目与最新的 Tailwind 改进保持同步 🚀
-
-### v2.0.0（2025年2月）
-专注于 Next.js 15 实现和全面重新设计的主要更新。
-
-#### 主要改进
-- 使用 Next.js 15 App Router 和 React Server Components 完全重新设计
-- 使用 Next.js 优化的组件增强用户界面
-- 改进响应性和可访问性
-- 新功能包括可折叠侧边栏、聊天屏幕和日历
-- 使用 Next.js App Router 和服务器操作重新设计认证
-- 使用 ApexCharts for React 更新数据可视化
-
-#### 破坏性更改
-
-- 从 Next.js 14 迁移到 Next.js 15
-- 图表组件现在使用 ApexCharts for React
-- 认证流程更新为使用服务器操作和中间件
-
-[在此版本中阅读更多](https://tailadmin.com/docs/update-logs/nextjs)。
+#### `src/icons/index.tsx`
+- **作用**：图标库导出文件
+- **功能**：统一管理所有 SVG 图标组件
+- **关键特性**：类型安全、按需导入、可扩展
 
 ## 开发指南
 
@@ -222,7 +316,7 @@ npm run lint
 
 ### 主要依赖
 
-- **Next.js 15.2.3**：React 框架
+- **Next.js 15.4.3**：React 框架
 - **React 19**：用户界面库
 - **TypeScript 5**：类型安全
 - **Tailwind CSS 4.0.0**：CSS 框架
@@ -230,20 +324,46 @@ npm run lint
 - **FullCalendar 6.1.15**：日历组件
 - **React DnD 16.0.1**：拖拽功能
 
+## 版本信息
+
+### 当前版本：2.2.0
+
+#### 主要特性
+- **Next.js 15.4.3**：使用最新的 App Router 和 React Server Components
+- **React 19**：最新的 React 特性支持
+- **Tailwind CSS 4.0**：现代化的 CSS 框架
+- **TypeScript 5**：完整的类型安全
+- **多场景仪表板**：7种不同业务场景的仪表板设计
+- **AI 功能模块**：集成文本、代码、图像、视频生成功能
+- **响应式设计**：完全适配移动端和桌面端
+- **暗色模式**：内置主题切换功能
+
+#### 技术亮点
+- 基于 Next.js 15 App Router 的现代化架构
+- React Server Components 和客户端组件的混合使用
+- 完整的 TypeScript 类型支持
+- 基于 ApexCharts 的数据可视化
+- 可折叠侧边栏和响应式布局
+- 完整的认证和权限管理系统
+
 ## 许可证
 
 TailAdmin Next.js 免费版本在 MIT 许可证下发布。
 
-## 支持
+## 支持与贡献
 
-如果您发现这个项目有帮助，请考虑在 GitHub 上给它一个星标。您的支持帮助我们继续开发和维护这个模板。
+### 获取支持
+- 如果您发现这个项目有帮助，请考虑在 GitHub 上给它一个星标
+- 您的支持帮助我们继续开发和维护这个模板
+- 欢迎提交 Issue 和 Pull Request
 
-## 贡献
+### 贡献指南
+- 欢迎贡献代码、文档和设计
+- 请查看项目的贡献指南了解如何参与开发
+- 提交代码前请确保通过所有测试和代码检查
 
-欢迎贡献！请查看我们的贡献指南以了解如何参与项目开发。
-
-## 联系方式
-
-- 网站：https://tailadmin.com
-- 文档：https://tailadmin.com/docs
-- GitHub：https://github.com/TailAdmin/free-nextjs-admin-dashboard
+### 联系方式
+- 官方网站：https://tailadmin.com
+- 项目文档：https://tailadmin.com/docs
+- GitHub 仓库：https://github.com/TailAdmin/free-nextjs-admin-dashboard
+- 设计文件：https://www.figma.com/community/file/1463141366275764364
