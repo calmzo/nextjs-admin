@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "This is Next.js Pie Chart page for TailAdmin - Next.js Tailwind CSS Admin Dashboard Template",
 };
 
-export default function page() {
+export default function PieChart() {
   return (
     <div>
       <PageBreadcrumb pageTitle="Pie Chart" />

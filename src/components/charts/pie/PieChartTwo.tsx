@@ -1,8 +1,12 @@
 "use client";
-
-import { useMemo } from "react";
-import Chart from "react-apexcharts";
+import React, { useMemo } from "react";
 import { ApexOptions } from "apexcharts";
+
+import dynamic from "next/dynamic";
+// Dynamically import the ReactApexChart component
+const ReactApexChart = dynamic(() => import("react-apexcharts"), {
+  ssr: false,
+});
 
 export default function PieChartTwo() {
   // Mocked dark mode state (replace with actual context/state if applicable)
@@ -105,7 +109,12 @@ export default function PieChartTwo() {
   return (
     <div className="flex justify-center">
       <div id="chartDarkStyle">
-        <Chart options={options} series={series} type="donut" width="400" />
+        <ReactApexChart
+          options={options}
+          series={series}
+          type="donut"
+          width="400"
+        />
       </div>
     </div>
   );
