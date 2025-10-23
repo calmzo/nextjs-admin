@@ -13,14 +13,7 @@ import Button from "@/components/ui/button/Button";
 import { ChevronLeftIcon, EyeCloseIcon, EyeIcon } from "@/icons";
 import { useAuthStore } from "@/store/authStore";
 import AuthAPI from "@/api/auth.api";
-
-// 登录表单数据类型
-interface LoginFormData {
-  username: string;
-  password: string;
-  captchaCode: string;
-  rememberMe: boolean;
-}
+import type { LoginFormData } from "@/types/api";
 
 export default function SignInForm() {
   // ==================== 状态管理 ====================
