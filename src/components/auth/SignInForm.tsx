@@ -1,16 +1,18 @@
 "use client";
+
+import React, { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import toast from "react-hot-toast";
+
 import Checkbox from "@/components/form/input/Checkbox";
 import Input from "@/components/form/input/InputField";
 import Label from "@/components/form/Label";
 import Button from "@/components/ui/button/Button";
 import { ChevronLeftIcon, EyeCloseIcon, EyeIcon } from "@/icons";
-import Link from "next/link";
-import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/store/authStore";
 import AuthAPI from "@/api/auth.api";
-import toast from "react-hot-toast";
 
 // 登录表单数据类型
 interface LoginFormData {
@@ -21,6 +23,7 @@ interface LoginFormData {
 }
 
 export default function SignInForm() {
+  // ==================== 状态管理 ====================
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [captchaImage, setCaptchaImage] = useState<string>("");
@@ -29,7 +32,8 @@ export default function SignInForm() {
   const [captchaLoading, setCaptchaLoading] = useState<boolean>(false);
   const [isCapsLock, setIsCapsLock] = useState<boolean>(false);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
-  
+
+  // ==================== Hooks ====================
   const router = useRouter();
   const { login, isAuthenticated, loading } = useAuthStore();
   
@@ -51,6 +55,8 @@ export default function SignInForm() {
     mode: "onChange" // 输入时验证
   });
 
+  // ==================== 表单验证逻辑 ====================
+
   // 自定义验证逻辑：用户名和密码必须有效，验证码可以为空（动态获取）
   const isFormValid = () => {
     const username = watch("username");
@@ -69,6 +75,8 @@ export default function SignInForm() {
 
   // 监听记住我状态
   const rememberMe = watch("rememberMe");
+
+  // ==================== 用户交互处理 ====================
 
   // 处理输入框焦点事件
   const handleFieldFocus = (fieldName: string) => {
@@ -95,7 +103,6 @@ export default function SignInForm() {
       setIsInitialLoad(false);
     }
   };
-
 
   // 检查CapsLock状态
   const checkCapsLock = (event: React.KeyboardEvent) => {
@@ -141,6 +148,8 @@ export default function SignInForm() {
     return !!fieldError;
   };
 
+  // ==================== API调用处理 ====================
+
   // 获取验证码
   const getCaptcha = async () => {
     try {
@@ -168,6 +177,8 @@ export default function SignInForm() {
     }
   };
 
+  // ==================== 生命周期处理 ====================
+
   // 组件挂载时获取验证码
   useEffect(() => {
     getCaptcha();
@@ -179,6 +190,8 @@ export default function SignInForm() {
       router.push("/");
     }
   }, [isAuthenticated, router]);
+
+  // ==================== 路由处理 ====================
 
   // 解析重定向目标
   const resolveRedirectTarget = (searchParams: URLSearchParams): string => {
@@ -201,9 +214,10 @@ export default function SignInForm() {
     }
   };
 
+  // ==================== 错误处理 ====================
+
   // 处理登录错误
   const handleLoginError = (error: any) => {
-    
     // 根据错误类型显示不同的提示信息
     let errorMessage = "登录失败，请重试";
     
@@ -244,6 +258,8 @@ export default function SignInForm() {
     setValue("captchaCode", "");
   };
 
+  // ==================== 表单提交处理 ====================
+
   // 表单提交处理
   const onSubmit = async (data: LoginFormData) => {
     // 防止重复提交
@@ -268,6 +284,8 @@ export default function SignInForm() {
       handleLoginError(error);
     }
   };
+
+  // ==================== 渲染组件 ====================
 
   return (
     <div className="flex flex-col flex-1 lg:w-1/2 w-full">
