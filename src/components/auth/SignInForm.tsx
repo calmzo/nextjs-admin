@@ -5,11 +5,254 @@ import Label from "@/components/form/Label";
 import Button from "@/components/ui/button/Button";
 import { ChevronLeftIcon, EyeCloseIcon, EyeIcon } from "@/icons";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { useAuthStore } from "@/store/authStore";
+import AuthAPI from "@/api/auth.api";
+import toast from "react-hot-toast";
+
+// 登录表单数据类型
+interface LoginFormData {
+  username: string;
+  password: string;
+  captchaCode: string;
+  rememberMe: boolean;
+}
 
 export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+  const [captchaImage, setCaptchaImage] = useState<string>("");
+  const [captchaKey, setCaptchaKey] = useState<string>("");
+  const [focusedField, setFocusedField] = useState<string>("");
+  const [captchaLoading, setCaptchaLoading] = useState<boolean>(false);
+  const [isCapsLock, setIsCapsLock] = useState<boolean>(false);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+  
+  const router = useRouter();
+  const { login, isAuthenticated, loading } = useAuthStore();
+  
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid, isDirty, touchedFields },
+    setValue,
+    watch,
+    trigger,
+    getValues
+  } = useForm<LoginFormData>({
+    defaultValues: {
+      username: "",
+      password: "",
+      captchaCode: "",
+      rememberMe: false
+    },
+    mode: "onChange" // 输入时验证
+  });
+
+  // 监听记住我状态
+  const rememberMe = watch("rememberMe");
+
+  // 处理输入框焦点事件
+  const handleFieldFocus = (fieldName: string) => {
+    setFocusedField(fieldName);
+    // 用户开始交互，不再是首次加载
+    if (isInitialLoad) {
+      setIsInitialLoad(false);
+    }
+  };
+
+  const handleFieldBlur = async (fieldName: keyof LoginFormData) => {
+    setFocusedField("");
+    // 用户开始交互，不再是首次加载
+    if (isInitialLoad) {
+      setIsInitialLoad(false);
+    }
+    // 触发实时验证
+    await trigger(fieldName);
+  };
+
+  // 处理用户交互，标记不再是首次加载
+  const handleUserInteraction = () => {
+    if (isInitialLoad) {
+      setIsInitialLoad(false);
+    }
+  };
+
+
+  // 检查CapsLock状态
+  const checkCapsLock = (event: React.KeyboardEvent) => {
+    if (event.getModifierState) {
+      setIsCapsLock(event.getModifierState("CapsLock"));
+    }
+  };
+
+  // 处理Enter键提交
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleSubmit(onSubmit)();
+    }
+  };
+
+  // 获取字段提示信息
+  const getFieldHint = (fieldName: string) => {
+    const hints: Record<string, string> = {
+      username: "请输入用户名",
+      password: "请输入密码",
+      captchaCode: "请输入验证码"
+    };
+    return hints[fieldName] || "";
+  };
+
+  // 检查字段是否应该显示错误
+  const shouldShowError = (fieldName: string) => {
+    const fieldError = errors[fieldName as keyof typeof errors];
+    const isTouched = touchedFields[fieldName as keyof typeof touchedFields];
+    const fieldValue = watch(fieldName as keyof LoginFormData);
+    
+    console.log(`shouldShowError for ${fieldName}:`, {
+      fieldError,
+      isTouched,
+      fieldValue,
+      hasError: !!fieldError,
+      shouldShow: isTouched && !!fieldError,
+      fieldErrorType: fieldError?.type,
+      fieldErrorMessage: fieldError?.message,
+      isInitialLoad
+    });
+    
+    // 如果是首次加载，不显示任何错误
+    if (isInitialLoad) {
+      return false;
+    }
+    
+    // 使用 onChange 模式，只要有错误就显示
+    // 对于用户名字段，如果为空也显示错误样式
+    if (fieldName === "username") {
+      return !!fieldError || (!fieldValue || (typeof fieldValue === "string" && fieldValue.trim() === ""));
+    }
+    
+    return !!fieldError;
+  };
+
+  // 获取验证码
+  const getCaptcha = async () => {
+    try {
+      setCaptchaLoading(true);
+      const result = await AuthAPI.getCaptcha();
+      setCaptchaImage(result.captchaBase64);
+      setCaptchaKey(result.captchaKey);
+    } catch (error: any) {
+      console.error("获取验证码失败:", error);
+      
+      // 根据错误类型显示不同的提示
+      let errorMessage = "获取验证码失败，请重试";
+      
+      if (error?.response?.data?.msg) {
+        errorMessage = error.response.data.msg;
+      } else if (error?.message) {
+        errorMessage = error.message;
+      } else if (error?.status >= 500) {
+        errorMessage = "服务器错误，请稍后重试";
+      }
+      
+      toast.error(errorMessage);
+    } finally {
+      setCaptchaLoading(false);
+    }
+  };
+
+  // 组件挂载时获取验证码
+  useEffect(() => {
+    getCaptcha();
+  }, []);
+
+  // 如果已登录，重定向到首页
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.push("/");
+    }
+  }, [isAuthenticated, router]);
+
+  // 解析重定向目标
+  const resolveRedirectTarget = (searchParams: URLSearchParams): string => {
+    // 默认跳转路径
+    const defaultPath = "/";
+    
+    // 获取原始重定向路径
+    const rawRedirect = searchParams.get("redirect") || defaultPath;
+    
+    try {
+      // 验证路径是否安全（防止开放重定向攻击）
+      const url = new URL(rawRedirect, window.location.origin);
+      if (url.origin !== window.location.origin) {
+        return defaultPath;
+      }
+      return url.pathname + url.search;
+    } catch {
+      // 异常处理：返回安全路径
+      return defaultPath;
+    }
+  };
+
+  // 处理登录错误
+  const handleLoginError = (error: any) => {
+    console.error("登录失败:", error);
+    
+    // 刷新验证码
+    getCaptcha();
+    setValue("captchaCode", "");
+    
+    // 根据错误类型显示不同的提示信息
+    let errorMessage = "登录失败，请重试";
+    
+    if (error?.response?.data?.msg) {
+      errorMessage = error.response.data.msg;
+    } else if (error?.message) {
+      errorMessage = error.message;
+    } else if (error?.code === "A0001") {
+      errorMessage = "Token已过期，请重新登录";
+    } else if (error?.code === "A0002") {
+      errorMessage = "会话已过期，请重新登录";
+    } else if (error?.status === 401) {
+      errorMessage = "用户名或密码错误";
+    } else if (error?.status === 403) {
+      errorMessage = "验证码错误，请重新输入";
+    } else if (error?.status === 429) {
+      errorMessage = "登录尝试次数过多，请稍后再试";
+    } else if (error?.status >= 500) {
+      errorMessage = "服务器错误，请稍后重试";
+    }
+    
+    toast.error(errorMessage);
+  };
+
+  // 表单提交处理
+  const onSubmit = async (data: LoginFormData) => {
+    console.log("Form submitted with data:", data);
+    console.log("Current errors:", errors);
+    console.log("Current touchedFields:", touchedFields);
+    try {
+      await login({
+        username: data.username,
+        password: data.password,
+        captchaCode: data.captchaCode,
+        captchaKey: captchaKey,
+        rememberMe: data.rememberMe
+      });
+      
+      toast.success("登录成功！");
+      
+      // 解析并跳转目标地址
+      const redirect = resolveRedirectTarget(new URLSearchParams(window.location.search));
+      router.push(redirect);
+    } catch (error: any) {
+      handleLoginError(error);
+    }
+  };
+
   return (
     <div className="flex flex-col flex-1 lg:w-1/2 w-full">
       <div className="w-full max-w-md sm:pt-10 mx-auto mb-5">
@@ -84,22 +327,91 @@ export default function SignInForm() {
                 </span>
               </div>
             </div>
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)} onKeyDown={handleKeyDown}>
               <div className="space-y-6">
                 <div>
                   <Label>
-                    Email <span className="text-error-500">*</span>{" "}
+                    用户名 <span className="text-error-500">*</span>{" "}
                   </Label>
-                  <Input placeholder="info@gmail.com" />
+                  <Input 
+                    placeholder={focusedField === "username" ? "请输入用户名" : "请输入用户名"}
+                    defaultValue="admin"
+                    {...register("username", {
+                      required: "用户名不能为空",
+                      minLength: {
+                        value: 2,
+                        message: "用户名至少2个字符"
+                      },
+                      maxLength: {
+                        value: 20,
+                        message: "用户名不能超过20个字符"
+                      },
+                      pattern: {
+                        value: /^[a-zA-Z0-9_\u4e00-\u9fa5]+$/,
+                        message: "用户名只能包含字母、数字、下划线和中文"
+                      }
+                    })}
+                    error={shouldShowError("username")}
+                    className={`${
+                      focusedField === "username" ? "ring-2 ring-blue-500 ring-opacity-50" : ""
+                    }`}
+                    onFocus={() => handleFieldFocus("username")}
+                    onBlur={() => handleFieldBlur("username")}
+                    onKeyDown={handleKeyDown}
+                    onChange={(e) => {
+                      handleUserInteraction();
+                      // 处理trim
+                      const trimmedValue = e.target.value.trim();
+                      // 直接设置值到React Hook Form
+                      setValue("username", trimmedValue, { shouldValidate: true });
+                    }}
+                    min={undefined}
+                    max={undefined}
+                  />
+                  {shouldShowError("username") && (
+                    <p className="mt-1 text-sm" style={{ color: '#f04438' }}>
+                      {errors.username?.message}
+                    </p>
+                  )}
                 </div>
                 <div>
                   <Label>
-                    Password <span className="text-error-500">*</span>{" "}
+                    密码 <span className="text-error-500">*</span>{" "}
                   </Label>
                   <div className="relative">
                     <Input
                       type={showPassword ? "text" : "password"}
-                      placeholder="Enter your password"
+                      placeholder="请输入密码"
+                      defaultValue="123456"
+                      {...register("password", {
+                        required: "密码不能为空",
+                        minLength: {
+                          value: 6,
+                          message: "密码至少6个字符"
+                        },
+                        maxLength: {
+                          value: 32,
+                          message: "密码不能超过32个字符"
+                        }
+                      
+                      })}
+                      error={shouldShowError("password")}
+                      className={`${
+                        focusedField === "password" ? "ring-2 ring-blue-500 ring-opacity-50" : ""
+                      }`}
+                      onFocus={() => handleFieldFocus("password")}
+                      onBlur={() => handleFieldBlur("password")}
+                      onKeyUp={checkCapsLock}
+                      onKeyDown={handleKeyDown}
+                      onChange={(e) => {
+                        handleUserInteraction();
+                        // 处理trim
+                        const trimmedValue = e.target.value.trim();
+                        // 直接设置值到React Hook Form
+                        setValue("password", trimmedValue, { shouldValidate: true });
+                      }}
+                      min={undefined}
+                      max={undefined}
                     />
                     <span
                       onClick={() => setShowPassword(!showPassword)}
@@ -112,25 +424,128 @@ export default function SignInForm() {
                       )}
                     </span>
                   </div>
+                  {shouldShowError("password") && (
+                    <p className="mt-1 text-sm" style={{ color: '#f04438' }}>{errors.password?.message}</p>
+                  )}
+                  {focusedField === "password" && !shouldShowError("password") && (
+                    <p className="mt-1 text-sm text-gray-500">{getFieldHint("password")}</p>
+                  )}
+                  {isCapsLock && (
+                    <p className="mt-1 text-sm text-amber-500 flex items-center gap-1">
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                      </svg>
+                      大写锁定已开启
+                    </p>
+                  )}
                 </div>
+                
+                {/* 验证码 */}
+                <div>
+                  <Label>
+                    验证码 <span className="text-error-500">*</span>{" "}
+                  </Label>
+                  <div className="flex gap-3">
+                    <Input 
+                      placeholder="请输入验证码"
+                      {...register("captchaCode", {
+                        required: "验证码不能为空",
+                        minLength: {
+                          value: 4,
+                          message: "验证码至少4个字符"
+                        },
+                        maxLength: {
+                          value: 6,
+                          message: "验证码不能超过6个字符"
+                        },
+                        pattern: {
+                          value: /^[a-zA-Z0-9]+$/,
+                          message: "验证码只能包含字母和数字"
+                        }
+                      })}
+                      error={shouldShowError("captchaCode")}
+                      className={`${
+                        focusedField === "captchaCode" ? "ring-2 ring-blue-500 ring-opacity-50" : ""
+                      }`}
+                      onFocus={() => handleFieldFocus("captchaCode")}
+                      onBlur={() => handleFieldBlur("captchaCode")}
+                      onKeyDown={handleKeyDown}
+                      onChange={(e) => {
+                        handleUserInteraction();
+                        // 处理trim
+                        const trimmedValue = e.target.value.trim();
+                        // 直接设置值到React Hook Form
+                        setValue("captchaCode", trimmedValue, { shouldValidate: true });
+                      }}
+                      min={undefined}
+                      max={undefined}
+                    />
+                    <div className="flex-shrink-0">
+                      {captchaLoading ? (
+                        <div className="h-10 w-24 border border-gray-300 rounded flex items-center justify-center bg-gray-50">
+                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-gray-600"></div>
+                        </div>
+                      ) : captchaImage ? (
+                        <div 
+                          className="h-10 w-24 border border-gray-300 rounded cursor-pointer flex items-center justify-center bg-gray-50 hover:bg-gray-100 transition-colors"
+                          onClick={getCaptcha}
+                          title="点击刷新验证码"
+                        >
+                          <img 
+                            src={captchaImage} 
+                            alt="验证码" 
+                            className="h-full w-full object-contain"
+                          />
+                        </div>
+                      ) : (
+                        <div 
+                          className="h-10 w-24 border border-gray-300 rounded cursor-pointer flex items-center justify-center bg-gray-50 hover:bg-gray-100 transition-colors"
+                          onClick={getCaptcha}
+                          title="点击获取验证码"
+                        >
+                          <span className="text-xs text-gray-500">获取验证码</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  {shouldShowError("captchaCode") && (
+                    <p className="mt-1 text-sm" style={{ color: '#f04438' }}>{errors.captchaCode?.message}</p>
+                  )}
+                  {focusedField === "captchaCode" && !shouldShowError("captchaCode") && (
+                    <p className="mt-1 text-sm text-gray-500">{getFieldHint("captchaCode")}</p>
+                  )}
+                </div>
+
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <Checkbox checked={isChecked} onChange={setIsChecked} />
+                    <Checkbox 
+                      checked={rememberMe} 
+                      onChange={(checked) => setValue("rememberMe", checked)} 
+                    />
                     <span className="block font-normal text-gray-700 text-theme-sm dark:text-gray-400">
-                      Keep me logged in
+                      记住我
                     </span>
                   </div>
                   <Link
                     href="/reset-password"
                     className="text-sm text-brand-500 hover:text-brand-600 dark:text-brand-400"
                   >
-                    Forgot password?
+                    忘记密码？
                   </Link>
                 </div>
                 <div>
-                  <Button className="w-full" size="sm">
-                    Sign in
+                  <Button 
+                    className="w-full" 
+                    size="sm"
+                    disabled={loading || !isValid || !isDirty}
+                  >
+                    {loading ? "登录中..." : "登录"}
                   </Button>
+                  {!isValid && isDirty && (
+                    <p className="mt-2 text-sm text-amber-500 text-center">
+                      请完善表单信息后再登录
+                    </p>
+                  )}
                 </div>
               </div>
             </form>
