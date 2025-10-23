@@ -43,13 +43,29 @@ export default function SignInForm() {
     getValues
   } = useForm<LoginFormData>({
     defaultValues: {
-      username: "",
-      password: "",
+      username: "admin",
+      password: "123456",
       captchaCode: "",
       rememberMe: false
     },
     mode: "onChange" // 输入时验证
   });
+
+  // 自定义验证逻辑：用户名和密码必须有效，验证码可以为空（动态获取）
+  const isFormValid = () => {
+    const username = watch("username");
+    const password = watch("password");
+    const captchaCode = watch("captchaCode");
+    
+    // 用户名和密码必须有效
+    const usernameValid = username && username.trim().length >= 3;
+    const passwordValid = password && password.trim().length >= 6;
+    
+    // 验证码可以为空（如果还没有获取到验证码）
+    const captchaValid = !captchaImage || (captchaCode && captchaCode.trim().length >= 4);
+    
+    return usernameValid && passwordValid && captchaValid;
+  };
 
   // 监听记住我状态
   const rememberMe = watch("rememberMe");
@@ -91,8 +107,8 @@ export default function SignInForm() {
   // 处理Enter键提交
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === "Enter") {
-      event.preventDefault();
-      handleSubmit(onSubmit)();
+      // 让表单自然提交，避免重复调用
+      // 表单的 onSubmit={handleSubmit(onSubmit)} 会自动处理
     }
   };
 
@@ -109,19 +125,7 @@ export default function SignInForm() {
   // 检查字段是否应该显示错误
   const shouldShowError = (fieldName: string) => {
     const fieldError = errors[fieldName as keyof typeof errors];
-    const isTouched = touchedFields[fieldName as keyof typeof touchedFields];
     const fieldValue = watch(fieldName as keyof LoginFormData);
-    
-    console.log(`shouldShowError for ${fieldName}:`, {
-      fieldError,
-      isTouched,
-      fieldValue,
-      hasError: !!fieldError,
-      shouldShow: isTouched && !!fieldError,
-      fieldErrorType: fieldError?.type,
-      fieldErrorMessage: fieldError?.message,
-      isInitialLoad
-    });
     
     // 如果是首次加载，不显示任何错误
     if (isInitialLoad) {
@@ -199,16 +203,18 @@ export default function SignInForm() {
 
   // 处理登录错误
   const handleLoginError = (error: any) => {
-    console.error("登录失败:", error);
-    
-    // 刷新验证码
-    getCaptcha();
-    setValue("captchaCode", "");
     
     // 根据错误类型显示不同的提示信息
     let errorMessage = "登录失败，请重试";
     
-    if (error?.response?.data?.msg) {
+    // 处理新的业务错误格式（从request拦截器返回的）
+    if (error?.code === "A0214") {
+      errorMessage = error.msg || "验证码错误，请重新输入";
+      // 验证码错误时，自动刷新验证码（避免重复调用）
+      if (!captchaLoading) {
+        getCaptcha();
+      }
+    } else if (error?.response?.data?.msg) {
       errorMessage = error.response.data.msg;
     } else if (error?.message) {
       errorMessage = error.message;
@@ -216,24 +222,34 @@ export default function SignInForm() {
       errorMessage = "Token已过期，请重新登录";
     } else if (error?.code === "A0002") {
       errorMessage = "会话已过期，请重新登录";
-    } else if (error?.status === 401) {
+    } else if (error?.response?.status === 401 || error?.status === 401) {
       errorMessage = "用户名或密码错误";
-    } else if (error?.status === 403) {
-      errorMessage = "验证码错误，请重新输入";
-    } else if (error?.status === 429) {
+    } else if (error?.response?.status === 403 || error?.status === 403) {
+      errorMessage = "访问被拒绝，权限不足";
+    } else if (error?.response?.status === 404 || error?.status === 404) {
+      errorMessage = "请求的资源不存在";
+    } else if (error?.response?.status === 429 || error?.status === 429) {
       errorMessage = "登录尝试次数过多，请稍后再试";
-    } else if (error?.status >= 500) {
+    } else if ((error?.response?.status >= 500) || (error?.status >= 500)) {
       errorMessage = "服务器错误，请稍后重试";
     }
-    
+    // 统一使用toast显示错误信息
     toast.error(errorMessage);
+  };
+
+
+  // 处理刷新验证码
+  const handleRefreshCaptcha = () => {
+    getCaptcha();
+    setValue("captchaCode", "");
   };
 
   // 表单提交处理
   const onSubmit = async (data: LoginFormData) => {
-    console.log("Form submitted with data:", data);
-    console.log("Current errors:", errors);
-    console.log("Current touchedFields:", touchedFields);
+    // 防止重复提交
+    if (loading) {
+      return;
+    }
     try {
       await login({
         username: data.username,
@@ -335,7 +351,6 @@ export default function SignInForm() {
                   </Label>
                   <Input 
                     placeholder={focusedField === "username" ? "请输入用户名" : "请输入用户名"}
-                    defaultValue="admin"
                     {...register("username", {
                       required: "用户名不能为空",
                       minLength: {
@@ -351,6 +366,7 @@ export default function SignInForm() {
                         message: "用户名只能包含字母、数字、下划线和中文"
                       }
                     })}
+                    value={watch("username")}
                     error={shouldShowError("username")}
                     className={`${
                       focusedField === "username" ? "ring-2 ring-blue-500 ring-opacity-50" : ""
@@ -360,10 +376,8 @@ export default function SignInForm() {
                     onKeyDown={handleKeyDown}
                     onChange={(e) => {
                       handleUserInteraction();
-                      // 处理trim
-                      const trimmedValue = e.target.value.trim();
-                      // 直接设置值到React Hook Form
-                      setValue("username", trimmedValue, { shouldValidate: true });
+                      // 直接设置值到React Hook Form，不进行trim处理
+                      setValue("username", e.target.value, { shouldValidate: true });
                     }}
                     min={undefined}
                     max={undefined}
@@ -382,7 +396,6 @@ export default function SignInForm() {
                     <Input
                       type={showPassword ? "text" : "password"}
                       placeholder="请输入密码"
-                      defaultValue="123456"
                       {...register("password", {
                         required: "密码不能为空",
                         minLength: {
@@ -395,6 +408,7 @@ export default function SignInForm() {
                         }
                       
                       })}
+                      value={watch("password")}
                       error={shouldShowError("password")}
                       className={`${
                         focusedField === "password" ? "ring-2 ring-blue-500 ring-opacity-50" : ""
@@ -405,10 +419,8 @@ export default function SignInForm() {
                       onKeyDown={handleKeyDown}
                       onChange={(e) => {
                         handleUserInteraction();
-                        // 处理trim
-                        const trimmedValue = e.target.value.trim();
-                        // 直接设置值到React Hook Form
-                        setValue("password", trimmedValue, { shouldValidate: true });
+                        // 直接设置值到React Hook Form，不进行trim处理
+                        setValue("password", e.target.value, { shouldValidate: true });
                       }}
                       min={undefined}
                       max={undefined}
@@ -463,6 +475,7 @@ export default function SignInForm() {
                           message: "验证码只能包含字母和数字"
                         }
                       })}
+                      value={watch("captchaCode")}
                       error={shouldShowError("captchaCode")}
                       className={`${
                         focusedField === "captchaCode" ? "ring-2 ring-blue-500 ring-opacity-50" : ""
@@ -472,10 +485,8 @@ export default function SignInForm() {
                       onKeyDown={handleKeyDown}
                       onChange={(e) => {
                         handleUserInteraction();
-                        // 处理trim
-                        const trimmedValue = e.target.value.trim();
-                        // 直接设置值到React Hook Form
-                        setValue("captchaCode", trimmedValue, { shouldValidate: true });
+                        // 直接设置值到React Hook Form，不进行trim处理
+                        setValue("captchaCode", e.target.value, { shouldValidate: true });
                       }}
                       min={undefined}
                       max={undefined}
@@ -537,15 +548,11 @@ export default function SignInForm() {
                   <Button 
                     className="w-full" 
                     size="sm"
-                    disabled={loading || !isValid || !isDirty}
+                    disabled={loading || !isFormValid()}
+                    onClick={handleSubmit(onSubmit)}
                   >
                     {loading ? "登录中..." : "登录"}
                   </Button>
-                  {!isValid && isDirty && (
-                    <p className="mt-2 text-sm text-amber-500 text-center">
-                      请完善表单信息后再登录
-                    </p>
-                  )}
                 </div>
               </div>
             </form>
@@ -564,6 +571,7 @@ export default function SignInForm() {
           </div>
         </div>
       </div>
+
     </div>
   );
 }
