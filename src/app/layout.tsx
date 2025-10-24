@@ -5,6 +5,7 @@ import "simplebar-react/dist/simplebar.min.css";
 import { SidebarProvider } from "@/context/SidebarContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 import Toaster from "@/components/common/Toaster";
+import { SimpleConfirmDialogProvider } from "@/components/ui/SimpleConfirmDialogProvider";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -22,6 +23,7 @@ export default function RootLayout({
           <SidebarProvider>{children}</SidebarProvider>
         </ThemeProvider>
         <Toaster />
+        <SimpleConfirmDialogProvider />
       </body>
     </html>
   );
