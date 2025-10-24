@@ -21,8 +21,9 @@ export function SimpleConfirmDialogProvider() {
         if (config?.onConfirm) {
           config.onConfirm();
         }
+        close(); // 确认后自动关闭弹窗
       }}
-      title={config.title}
+      title={config.title || "确认"}
       message={config.message}
       confirmText={config.confirmText}
       cancelText={config.cancelText}
