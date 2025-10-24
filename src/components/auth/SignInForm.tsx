@@ -18,7 +18,6 @@ import type { LoginFormData } from "@/types/api";
 export default function SignInForm() {
   // ==================== 状态管理 ====================
   const [showPassword, setShowPassword] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
   const [captchaImage, setCaptchaImage] = useState<string>("");
   const [captchaKey, setCaptchaKey] = useState<string>("");
   const [focusedField, setFocusedField] = useState<string>("");
@@ -33,11 +32,10 @@ export default function SignInForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid, isDirty, touchedFields },
+    formState: { errors },
     setValue,
     watch,
     trigger,
-    getValues
   } = useForm<LoginFormData>({
     defaultValues: {
       username: "admin",
@@ -245,11 +243,6 @@ export default function SignInForm() {
   };
 
 
-  // 处理刷新验证码
-  const handleRefreshCaptcha = () => {
-    getCaptcha();
-    setValue("captchaCode", "");
-  };
 
   // ==================== 表单提交处理 ====================
 
@@ -541,7 +534,7 @@ export default function SignInForm() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <Checkbox 
-                      checked={rememberMe} 
+                      checked={!!rememberMe} 
                       onChange={(checked) => setValue("rememberMe", checked)} 
                     />
                     <span className="block font-normal text-gray-700 text-theme-sm dark:text-gray-400">
