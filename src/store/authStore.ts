@@ -4,6 +4,7 @@ import { Auth } from '@/utils/auth';
 import AuthAPI from '@/api/auth.api';
 import UserAPI from '@/api/user.api';
 import type { UserInfo, LoginFormData } from '@/types/api';
+import { usePermissionStore } from './permissionStore';
 
 // 认证状态接口
 interface AuthState {
@@ -65,6 +66,7 @@ export const useAuthStore = create<AuthState>()(
           
         } catch (error) {
           console.error('登出API调用失败:', error);
+          // 即使API调用失败，也要清除本地状态
         } finally {
           // 清除本地状态和token
           get().clearSession();
@@ -93,7 +95,24 @@ export const useAuthStore = create<AuthState>()(
 
       // 清除会话
       clearSession: () => {
+        // 清除认证信息
         Auth.clearAuth();
+        
+        // 清除权限相关状态
+        const permissionStore = usePermissionStore.getState();
+        permissionStore.clearCache();
+        
+        // 清除所有相关的本地存储
+        if (typeof window !== 'undefined') {
+          // 清除可能的缓存数据
+          localStorage.removeItem('userInfo');
+          localStorage.removeItem('permissions');
+          localStorage.removeItem('routes');
+          localStorage.removeItem('dict-cache');
+          sessionStorage.clear();
+        }
+        
+        // 重置状态
         set({ 
           isAuthenticated: false,
           userInfo: null,
