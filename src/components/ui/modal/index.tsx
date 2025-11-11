@@ -58,19 +58,19 @@ export const Modal: React.FC<ModalProps> = ({
     <div className="fixed inset-0 flex items-center justify-center overflow-y-auto modal z-99999">
       {!isFullscreen && (
         <div
-          className="fixed inset-0 h-full w-full bg-gray-400/50 backdrop-blur-[32px]"
+          className="fixed inset-0 h-full w-full bg-black/50 transition-all duration-300"
           onClick={onClose}
         ></div>
       )}
       <div
         ref={modalRef}
-        className={`${contentClasses}  ${className}`}
+        className={`${contentClasses} ${className} animate-in fade-in-0 zoom-in-95 duration-300`}
         onClick={(e) => e.stopPropagation()}
       >
         {showCloseButton && (
           <button
             onClick={onClose}
-            className="absolute right-3 top-3 z-999 flex h-9.5 w-9.5 items-center justify-center rounded-full bg-gray-100 text-gray-400 transition-colors hover:bg-gray-200 hover:text-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white sm:right-6 sm:top-6 sm:h-11 sm:w-11"
+            className="absolute right-4 top-4 z-999 flex h-8 w-8 items-center justify-center rounded-full bg-gray-100/80 backdrop-blur-sm text-gray-500 transition-all duration-200 hover:bg-gray-200/90 hover:text-gray-700 hover:scale-110 dark:bg-gray-800/80 dark:text-gray-400 dark:hover:bg-gray-700/90 dark:hover:text-white sm:right-6 sm:top-6 sm:h-10 sm:w-10"
           >
             <svg
               width="24"

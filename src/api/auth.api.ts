@@ -1,7 +1,7 @@
 import request from '@/utils/request';
 import type { LoginFormData, LoginResult, CaptchaInfo } from '@/types/api';
 
-const AUTH_BASE_URL = '/prod-api/admin/system/auth';
+const AUTH_BASE_URL = '/admin/system/auth';
 
 export const AuthAPI = {
   /**
@@ -68,7 +68,7 @@ export const AuthAPI = {
    */
   getCaptcha(): Promise<CaptchaInfo> {
     return request({
-      url: '/prod-api/admin/system/auth/captcha',
+      url: '/admin/system/auth/captcha',
       method: 'get',
       headers: {
         Authorization: 'no-auth',

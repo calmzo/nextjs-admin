@@ -32,7 +32,7 @@ export default function ToastTestPage() {
   };
 
   const showCustomToast = () => {
-    toast.custom((t: any) => (
+    toast.custom((t: { visible?: boolean; id?: string }) => (
       <div
         className={`${
           t.visible ? "animate-enter" : "animate-leave"

@@ -3,12 +3,13 @@ import Button from "@/components/ui/button/Button";
 import { Modal } from "@/components/ui/modal";
 import { useModal } from "@/hooks/useModal";
 import React from "react";
+import logger from '@/utils/logger';
 
 export default function BillingInfo() {
   const { isOpen, openModal, closeModal } = useModal();
   const handleSave = () => {
     // Handle save logic here
-    console.log("Saving changes...");
+    logger.debug("Saving changes...");
     closeModal();
   };
   return (

@@ -15,7 +15,7 @@ const ReactApexChart = dynamic(() => import("react-apexcharts"), {
 export default function SessionChart() {
   const options: ApexOptions = {
     colors: ["#3641f5", "#7592ff", "#dde9ff"],
-    labels: ["Desktop", "Mobile", "Tablet"],
+    labels: ["桌面端", "移动端", "平板"],
     chart: {
       fontFamily: "Outfit, sans-serif",
       type: "donut",
@@ -108,7 +108,7 @@ export default function SessionChart() {
     <div className="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] sm:p-6">
       <div className="flex items-center justify-between mb-9">
         <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-          Sessions By Device
+          设备会话
         </h3>
         <div className="relative h-fit">
           <button onClick={toggleDropdown} className="dropdown-toggle">
@@ -123,13 +123,13 @@ export default function SessionChart() {
               onItemClick={closeDropdown}
               className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
             >
-              View More
+              查看更多
             </DropdownItem>
             <DropdownItem
               onItemClick={closeDropdown}
               className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
             >
-              Delete
+              删除
             </DropdownItem>
           </Dropdown>
         </div>

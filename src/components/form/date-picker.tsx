@@ -33,6 +33,7 @@ export default function DatePicker({
       dateFormat: "Y-m-d",
       defaultDate,
       onChange,
+      appendTo: typeof window !== 'undefined' ? document.body : undefined,
     });
 
     return () => {

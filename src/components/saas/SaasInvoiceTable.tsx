@@ -6,35 +6,35 @@ const transactions = [
     date: "April 28, 2016",
     user: "Jenny Wilson",
     amount: "$473.85",
-    status: "Complete" as const,
+    status: "已完成" as const,
   },
   {
     id: "#HTY274",
     date: "October 30, 2017",
     user: "Wade Warren",
     amount: "$293.01",
-    status: "Complete" as const,
+    status: "已完成" as const,
   },
   {
     id: "#LKE600",
     date: "May 29, 2017",
     user: "Darlene Robertson",
     amount: "$782.01",
-    status: "Pending" as const,
+    status: "待处理" as const,
   },
   {
     id: "#HRP447",
     date: "May 20, 2015",
     user: "Arlene McCoy",
     amount: "$202.87",
-    status: "Cancelled" as const,
+    status: "已取消" as const,
   },
   {
     id: "#WRH647",
     date: "March 13, 2014",
     user: "Bessie Cooper",
     amount: "$490.51",
-    status: "Complete" as const,
+    status: "已完成" as const,
   },
 ];
 
@@ -43,7 +43,7 @@ export default function SaasInvoiceTable() {
     <div className="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
       <div className="px-6 py-4">
         <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-          Recent Invoices
+          最近的发票
         </h3>
       </div>
       <div className="custom-scrollbar overflow-x-auto">
@@ -51,19 +51,19 @@ export default function SaasInvoiceTable() {
           <thead>
             <tr className="bg-gray-50 dark:bg-gray-900">
               <th className="px-6 py-4 text-left text-sm font-medium whitespace-nowrap text-gray-500 dark:text-gray-400">
-                Serial No:
+                序列号
               </th>
               <th className="px-6 py-4 text-left text-sm font-medium whitespace-nowrap text-gray-500 dark:text-gray-400">
-                Close Date
+                关闭日期
               </th>
               <th className="px-6 py-4 text-left text-sm font-medium whitespace-nowrap text-gray-500 dark:text-gray-400">
-                User
+                用户
               </th>
               <th className="px-6 py-4 text-left text-sm font-medium whitespace-nowrap text-gray-500 dark:text-gray-400">
-                Amount
+                金额
               </th>
               <th className="px-6 py-4 text-left text-sm font-medium whitespace-nowrap text-gray-500 dark:text-gray-400">
-                Status
+                状态
               </th>
             </tr>
           </thead>
@@ -181,9 +181,9 @@ export default function SaasInvoiceTable() {
                   <Badge
                     size="sm"
                     color={
-                      transaction.status === "Complete"
+                      transaction.status === "已完成"
                         ? "success"
-                        : transaction.status === "Pending"
+                        : transaction.status === "待处理"
                         ? "warning"
                         : "error"
                     }

@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import logger from '@/utils/logger';
 
 // Copy Button Component
 interface CopyButtonProps {
@@ -16,7 +17,7 @@ function CopyButton({ textToCopy }: CopyButtonProps) {
       // Reset the copied state after 2 seconds
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
-      console.error("Failed to copy text: ", err);
+      logger.error("Failed to copy text: ", err);
     }
   };
 

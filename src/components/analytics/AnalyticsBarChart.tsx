@@ -106,7 +106,7 @@ export default function AnalyticsBarChart() {
 
   const series = [
     {
-      name: "Sales",
+      name: "销量",
       data: [
         168, 385, 201, 298, 187, 195, 291, 110, 215, 390, 280, 112, 123, 212,
         270, 190, 310, 115, 90, 380, 112, 223, 292, 170, 290, 110, 115, 290,
@@ -119,10 +119,10 @@ export default function AnalyticsBarChart() {
       <div className="flex flex-wrap items-start justify-between gap-5">
         <div>
           <h3 className="mb-1 text-lg font-semibold text-gray-800 dark:text-white/90">
-            Analytics
+            数据分析
           </h3>
           <span className="block text-gray-500 text-theme-sm dark:text-gray-400">
-            Visitor analytics of last 30 days
+            过去 30 天的访客分析
           </span>
         </div>
         <ChartTab />

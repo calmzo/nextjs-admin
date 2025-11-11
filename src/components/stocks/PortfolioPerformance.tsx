@@ -318,7 +318,7 @@ export default function PortfolioPerformance() {
 
   const series = [
     {
-      name: "Portfolio Performance",
+      name: "投资组合表现",
       data: data,
     },
   ];
@@ -327,10 +327,10 @@ export default function PortfolioPerformance() {
       <div className="flex flex-col gap-5 mb-6 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-            Portfolio Performance
+            投资组合表现
           </h3>
           <p className="mt-1 text-gray-500 text-theme-sm dark:text-gray-400">
-            Here is your performance stats of each month
+            这是您每月的表现统计数据
           </p>
         </div>
         <div>

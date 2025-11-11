@@ -12,7 +12,7 @@ export default function LogisticsMetrics() {
             12,384
           </h3>
           <p className="flex items-center gap-3 text-gray-500 dark:text-gray-400">
-            Total Orders
+            总订单数
             <span className="bg-success-50 text-success-600 dark:bg-success-500/15 dark:text-success-500 inline-flex items-center justify-center gap-1 rounded-full px-2.5 py-0.5 text-sm font-medium">
               +20%
             </span>
@@ -28,7 +28,7 @@ export default function LogisticsMetrics() {
             728
           </h3>
           <p className="flex items-center gap-3 text-gray-500 dark:text-gray-400">
-            Orders in Transit
+            运输中订单
             <span className="bg-success-50 text-success-600 dark:bg-success-500/15 dark:text-success-500 inline-flex items-center justify-center gap-1 rounded-full px-2.5 py-0.5 text-sm font-medium">
               +20%
             </span>
@@ -44,7 +44,7 @@ export default function LogisticsMetrics() {
             12,384
           </h3>
           <p className="flex items-center gap-3 text-gray-500 dark:text-gray-400">
-            Total Orders
+            总订单数
             <span className="bg-success-50 text-success-600 dark:bg-success-500/15 dark:text-success-500 inline-flex items-center justify-center gap-1 rounded-full px-2.5 py-0.5 text-sm font-medium">
               +20%
             </span>

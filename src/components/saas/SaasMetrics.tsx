@@ -4,14 +4,14 @@ export default function SaasMetrics() {
       <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
         <div>
           <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
-            Overview
+            概览
           </h3>
         </div>
       </div>
       <div className="grid rounded-2xl border border-gray-200 bg-white sm:grid-cols-2 xl:grid-cols-4 dark:border-gray-800 dark:bg-gray-900">
         <div className="border-b border-gray-200 px-6 py-5 sm:border-r xl:border-b-0 dark:border-gray-800">
           <span className="text-sm text-gray-500 dark:text-gray-400">
-            Total Revenue
+            总收入
           </span>
           <div className="mt-2 flex items-end gap-3">
             <h4 className="text-title-xs sm:text-title-sm font-bold text-gray-800 dark:text-white/90">
@@ -26,7 +26,7 @@ export default function SaasMetrics() {
         </div>
         <div className="border-b border-gray-200 px-6 py-5 xl:border-r xl:border-b-0 dark:border-gray-800">
           <span className="text-sm text-gray-500 dark:text-gray-400">
-            Active Users
+            活跃用户
           </span>
           <div className="mt-2 flex items-end gap-3">
             <h4 className="text-title-xs sm:text-title-sm font-bold text-gray-800 dark:text-white/90">
@@ -42,7 +42,7 @@ export default function SaasMetrics() {
         <div className="border-b border-gray-200 px-6 py-5 sm:border-r sm:border-b-0 dark:border-gray-800">
           <div>
             <span className="text-sm text-gray-500 dark:text-gray-400">
-              Customer Lifetime Value
+              客户终身价值
             </span>
             <div className="mt-2 flex items-end gap-3">
               <h4 className="text-title-xs sm:text-title-sm font-bold text-gray-800 dark:text-white/90">
@@ -58,7 +58,7 @@ export default function SaasMetrics() {
         </div>
         <div className="px-6 py-5">
           <span className="text-sm text-gray-500 dark:text-gray-400">
-            Customer Acquisition Cost
+            客户获取成本
           </span>
           <div className="mt-2 flex items-end gap-3">
             <h4 className="text-title-xs sm:text-title-sm font-bold text-gray-800 dark:text-white/90">

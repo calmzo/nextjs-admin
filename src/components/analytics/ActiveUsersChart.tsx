@@ -115,7 +115,7 @@ export default function ActiveUsersChart() {
 
   const series = [
     {
-      name: "Sales",
+      name: "销量",
       data: [180, 181, 182, 184, 183, 182, 181, 182, 183, 185, 186, 183],
     },
   ];
@@ -133,7 +133,7 @@ export default function ActiveUsersChart() {
     <div className="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] md:p-6">
       <div className="flex items-start justify-between">
         <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-          Active Users
+          活跃用户
         </h3>
 
         <div className="relative h-fit">
@@ -149,13 +149,13 @@ export default function ActiveUsersChart() {
               onItemClick={closeDropdown}
               className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
             >
-              View More
+              查看更多
             </DropdownItem>
             <DropdownItem
               onItemClick={closeDropdown}
               className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
             >
-              Delete
+              删除
             </DropdownItem>
           </Dropdown>
         </div>
@@ -174,7 +174,7 @@ export default function ActiveUsersChart() {
           </span>
         </div>
         <span className="block mb-1 text-gray-500 text-theme-sm dark:text-gray-400">
-          Live visitors
+          实时访客
         </span>
       </div>
 
@@ -195,7 +195,7 @@ export default function ActiveUsersChart() {
             224
           </p>
           <p className="mt-0.5 text-center text-theme-xs text-gray-500 dark:text-gray-400">
-            Avg, Daily
+            日均
           </p>
         </div>
 
@@ -206,7 +206,7 @@ export default function ActiveUsersChart() {
             1.4K
           </p>
           <p className="mt-0.5 text-center text-theme-xs text-gray-500 dark:text-gray-400">
-            Avg, Weekly
+            周均
           </p>
         </div>
 
@@ -217,7 +217,7 @@ export default function ActiveUsersChart() {
             22.1K
           </p>
           <p className="mt-0.5 text-center text-theme-xs text-gray-500 dark:text-gray-400">
-            Avg, Monthly
+            月均
           </p>
         </div>
       </div>

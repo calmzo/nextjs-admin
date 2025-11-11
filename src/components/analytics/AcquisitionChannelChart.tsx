@@ -14,19 +14,19 @@ const ReactApexChart = dynamic(() => import("react-apexcharts"), {
 export default function AcquisitionChannelChart() {
   const series = [
     {
-      name: "Direct",
+      name: "直接访问",
       data: [44, 55, 41, 67, 22, 43, 55, 41],
     },
     {
-      name: "Referral",
+      name: "推荐来源",
       data: [13, 23, 20, 8, 13, 27, 13, 23],
     },
     {
-      name: "Organic Search",
+      name: "自然搜索",
       data: [11, 17, 15, 15, 21, 14, 18, 20],
     },
     {
-      name: "Social",
+      name: "社交媒体",
       data: [21, 7, 25, 13, 22, 8, 18, 20],
     },
   ];
@@ -121,7 +121,7 @@ export default function AcquisitionChannelChart() {
     <div className="rounded-2xl border border-gray-200 bg-white px-5 pt-5 dark:border-gray-800 dark:bg-white/[0.03] sm:px-6 sm:pt-6">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-          Acquisition Channels
+          获客渠道
         </h3>
         <div className="relative h-fit">
           <button onClick={toggleDropdown} className="dropdown-toggle">
@@ -136,13 +136,13 @@ export default function AcquisitionChannelChart() {
               onItemClick={closeDropdown}
               className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
             >
-              View More
+              查看更多
             </DropdownItem>
             <DropdownItem
               onItemClick={closeDropdown}
               className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
             >
-              Delete
+              删除
             </DropdownItem>
           </Dropdown>
         </div>

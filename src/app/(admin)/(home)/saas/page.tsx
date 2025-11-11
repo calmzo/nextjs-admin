@@ -10,9 +10,9 @@ import React from "react";
 
 export const metadata: Metadata = {
   title:
-    "Next.js SaaS Dashboard | TailAdmin - Next.js Admin Dashboard Template",
+    "SaaS 仪表板 | TailAdmin - Next.js 管理仪表板模板",
   description:
-    "This is Next.js SaaS Dashboard page for TailAdmin - Next.js Tailwind CSS Admin Dashboard Template",
+    "这是 TailAdmin - Next.js Tailwind CSS 管理仪表板模板的 SaaS 仪表板页面",
 };
 
 export default function SaaS() {

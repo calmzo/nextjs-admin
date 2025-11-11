@@ -7,6 +7,7 @@ import { Dropdown } from "../ui/dropdown/Dropdown";
 import { DropdownItem } from "../ui/dropdown/DropdownItem";
 import { confirm } from "@/utils/simpleConfirmDialog";
 import { toast } from "react-hot-toast";
+import { handleError } from '@/utils/error-handler';
 
 export default function UserDropdown() {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,8 +38,8 @@ export default function UserDropdown() {
       router.push(redirectUrl);
       
     } catch (error) {
-      console.error("退出登录失败:", error);
-      toast.error("退出登录失败，请重试");
+      // 使用统一错误处理
+      handleError(error, { customMessage: '退出登录失败，请重试' });
     } finally {
       closeDropdown();
     }

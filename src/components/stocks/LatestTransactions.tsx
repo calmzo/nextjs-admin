@@ -11,43 +11,43 @@ import {
 const transactionData = [
   {
     image: "/images/brand/brand-08.svg", // Path or URL for the image
-    action: "Bought PYPL", // Action description
+    action: "买入 PYPL", // Action description
     date: "Nov 23, 01:00 PM", // Date and time of the transaction
     amount: "$2,567.88", // Transaction amount
-    category: "Finance", // Category of the transaction
-    status: "Success",
+    category: "金融", // Category of the transaction
+    status: "成功",
   },
   {
     image: "/images/brand/brand-07.svg", // Path or URL for the image
-    action: "Bought AAPL", // Action description
+    action: "买入 AAPL", // Action description
     date: "Nov 23, 01:00 PM", // Date and time of the transaction
     amount: "$2,567.88", // Transaction amount
-    category: "Finance", // Category of the transaction
-    status: "Pending",
+    category: "金融", // Category of the transaction
+    status: "待处理",
   },
   {
     image: "/images/brand/brand-15.svg", // Path or URL for the image
-    action: "Sell KKST", // Action description
+    action: "卖出 KKST", // Action description
     date: "Nov 23, 01:00 PM", // Date and time of the transaction
     amount: "$2,567.88", // Transaction amount
-    category: "Finance", // Category of the transaction
-    status: "Success",
+    category: "金融", // Category of the transaction
+    status: "成功",
   },
   {
     image: "/images/brand/brand-02.svg", // Path or URL for the image
-    action: "Bought FB", // Action description
+    action: "买入 FB", // Action description
     date: "Nov 23, 01:00 PM", // Date and time of the transaction
     amount: "$2,567.88", // Transaction amount
-    category: "Finance", // Category of the transaction
-    status: "Success",
+    category: "金融", // Category of the transaction
+    status: "成功",
   },
   {
     image: "/images/brand/brand-10.svg", // Path or URL for the image
-    action: "Sell AMZN", // Action description
+    action: "卖出 AMZN", // Action description
     date: "Nov 23, 01:00 PM", // Date and time of the transaction
     amount: "$2,567.88", // Transaction amount
-    category: "Finance", // Category of the transaction
-    status: "Failed",
+    category: "金融", // Category of the transaction
+    status: "失败",
   },
 ];
 
@@ -56,9 +56,9 @@ export default function LatestTransactions() {
     <div className="rounded-2xl border border-gray-200 bg-white pt-4 dark:border-gray-800 dark:bg-white/[0.03]">
       <div className="flex flex-col gap-2 px-5 mb-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
         <div>
-          <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-            Latest Transactions
-          </h3>
+            <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
+              最近交易
+            </h3>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
           <form>
@@ -82,7 +82,7 @@ export default function LatestTransactions() {
               </button>
               <input
                 type="text"
-                placeholder="Search..."
+                placeholder="搜索..."
                 className="dark:bg-dark-900 h-[42px] w-full rounded-lg border border-gray-300 bg-transparent py-2.5 pl-[42px] pr-4 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800 xl:w-[300px]"
               />
             </div>
@@ -101,31 +101,31 @@ export default function LatestTransactions() {
                     isHeader
                     className="py-3 font-normal text-gray-500 text-start text-theme-sm dark:text-gray-400"
                   >
-                    Name
+                    名称
                   </TableCell>
                   <TableCell
                     isHeader
                     className="px-4 py-3 font-normal text-gray-500 text-start text-theme-sm dark:text-gray-400"
                   >
-                    Date
+                    日期
                   </TableCell>
                   <TableCell
                     isHeader
                     className="px-4 py-3 font-normal text-gray-500 text-start text-theme-sm dark:text-gray-400"
                   >
-                    Price
+                    价格
                   </TableCell>
                   <TableCell
                     isHeader
                     className="px-4 py-3 font-normal text-gray-500 text-start text-theme-sm dark:text-gray-400"
                   >
-                    Category
+                    类别
                   </TableCell>
                   <TableCell
                     isHeader
                     className="px-4 py-3 font-normal text-gray-500 text-start text-theme-sm dark:text-gray-400"
                   >
-                    Status
+                    状态
                   </TableCell>
                 </TableRow>
               </TableHeader>
@@ -163,9 +163,9 @@ export default function LatestTransactions() {
                       <Badge
                         size="sm"
                         color={
-                          item.status === "Success"
+                          item.status === "成功"
                             ? "success"
-                            : item.status === "Pending"
+                            : item.status === "待处理"
                             ? "warning"
                             : "error"
                         }

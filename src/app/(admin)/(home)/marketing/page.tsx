@@ -8,9 +8,9 @@ import React from "react";
 
 export const metadata: Metadata = {
   title:
-    "Next.js Marketing Dashboard | TailAdmin - Next.js Admin Dashboard Template",
+    "营销仪表板 | TailAdmin - Next.js 管理仪表板模板",
   description:
-    "This is Next.js Marketing Dashboard page for TailAdmin - Next.js Tailwind CSS Admin Dashboard Template",
+    "这是 TailAdmin - Next.js Tailwind CSS 管理仪表板模板的营销仪表板页面",
 };
 
 export default function Marketing() {

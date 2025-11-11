@@ -15,7 +15,7 @@ const ReactApexChart = dynamic(() => import("react-apexcharts"), {
 export default function GrowthChart() {
   const growthSeries = [
     {
-      name: "Revenue",
+      name: "收入",
       data: [12500, 14000, 15500, 14800, 16200, 17500, 18200],
     },
   ];
@@ -78,10 +78,10 @@ export default function GrowthChart() {
       <div className="mb-6 flex justify-between">
         <div>
           <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-            User Growth
+            用户增长
           </h3>
           <p className="text-theme-sm mt-1 text-gray-500 dark:text-gray-400">
-            New signups website + mobile
+            网站 + 移动端新注册用户
           </p>
         </div>
         <div className="relative inline-block">
@@ -97,13 +97,13 @@ export default function GrowthChart() {
               onItemClick={closeDropdown}
               className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
             >
-              View More
+              查看更多
             </DropdownItem>
             <DropdownItem
               onItemClick={closeDropdown}
               className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
             >
-              Delete
+              删除
             </DropdownItem>
           </Dropdown>
         </div>
@@ -115,7 +115,7 @@ export default function GrowthChart() {
           </h3>
           <p className="text-theme-xs mt-1 text-gray-500 dark:text-gray-400">
             <span className="text-success-600 mr-1 inline-block">+3.85%</span>
-            than last Week
+            较上周
           </p>
         </div>
         <div className="max-w-full">

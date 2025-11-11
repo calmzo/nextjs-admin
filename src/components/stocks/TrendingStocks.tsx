@@ -28,9 +28,9 @@ export default function TrendingStocks() {
   return (
     <div className="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] sm:p-6">
       <div className="flex justify-between mb-6">
-        <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-          Trending Stocks
-        </h3>
+          <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
+            热门股票
+          </h3>
 
         <div className="stocks-slider-outer relative flex items-center gap-1.5">
           <div className="swiper-button-prev ">
@@ -127,11 +127,11 @@ export default function TrendingStocks() {
 
               <div className="flex items-center gap-3">
                 <button className="flex w-full items-center justify-center rounded-lg border border-gray-300 bg-white p-3 text-theme-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03]">
-                  Short Stock
+                  做空股票
                 </button>
 
                 <button className="flex items-center justify-center w-full p-3 font-medium text-white rounded-lg bg-brand-500 text-theme-sm shadow-theme-xs hover:bg-brand-600">
-                  Buy Stock
+                  买入股票
                 </button>
               </div>
             </div>
@@ -191,11 +191,11 @@ export default function TrendingStocks() {
 
               <div className="flex items-center gap-3">
                 <button className="flex w-full items-center justify-center rounded-lg border border-gray-300 bg-white p-3 text-theme-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03]">
-                  Short Stock
+                  做空股票
                 </button>
 
                 <button className="flex items-center justify-center w-full p-3 font-medium text-white rounded-lg bg-brand-500 text-theme-sm shadow-theme-xs hover:bg-brand-600">
-                  Buy Stock
+                  买入股票
                 </button>
               </div>
             </div>
@@ -255,11 +255,11 @@ export default function TrendingStocks() {
 
               <div className="flex items-center gap-3">
                 <button className="flex w-full items-center justify-center rounded-lg border border-gray-300 bg-white p-3 text-theme-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03]">
-                  Short Stock
+                  做空股票
                 </button>
 
                 <button className="flex items-center justify-center w-full p-3 font-medium text-white rounded-lg bg-brand-500 text-theme-sm shadow-theme-xs hover:bg-brand-600">
-                  Buy Stock
+                  买入股票
                 </button>
               </div>
             </div>
@@ -319,11 +319,11 @@ export default function TrendingStocks() {
 
               <div className="flex items-center gap-3">
                 <button className="flex w-full items-center justify-center rounded-lg border border-gray-300 bg-white p-3 text-theme-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03]">
-                  Short Stock
+                  做空股票
                 </button>
 
                 <button className="flex items-center justify-center w-full p-3 font-medium text-white rounded-lg bg-brand-500 text-theme-sm shadow-theme-xs hover:bg-brand-600">
-                  Buy Stock
+                  买入股票
                 </button>
               </div>
             </div>
@@ -383,11 +383,11 @@ export default function TrendingStocks() {
 
               <div className="flex items-center gap-3">
                 <button className="flex w-full items-center justify-center rounded-lg border border-gray-300 bg-white p-3 text-theme-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03]">
-                  Short Stock
+                  做空股票
                 </button>
 
                 <button className="flex items-center justify-center w-full p-3 font-medium text-white rounded-lg bg-brand-500 text-theme-sm shadow-theme-xs hover:bg-brand-600">
-                  Buy Stock
+                  买入股票
                 </button>
               </div>
             </div>

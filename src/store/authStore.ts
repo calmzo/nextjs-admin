@@ -5,6 +5,7 @@ import AuthAPI from '@/api/auth.api';
 import UserAPI from '@/api/user.api';
 import type { UserInfo, LoginFormData } from '@/types/api';
 import { usePermissionStore } from './permissionStore';
+import logger from '@/utils/logger';
 
 // 认证状态接口
 interface AuthState {
@@ -65,7 +66,7 @@ export const useAuthStore = create<AuthState>()(
           await AuthAPI.logout();
           
         } catch (error) {
-          console.error('登出API调用失败:', error);
+          logger.error('登出API调用失败:', error);
           // 即使API调用失败，也要清除本地状态
         } finally {
           // 清除本地状态和token
@@ -131,6 +132,21 @@ export const useAuthStore = create<AuthState>()(
         isAuthenticated: state.isAuthenticated,
         userInfo: state.userInfo,
       }),
+      onRehydrateStorage: () => (state) => {
+        // 在恢复状态后，检查是否有 token
+        // 如果有 token 但 isAuthenticated 为 false，则设置为 true
+        // 这样可以确保在页面刷新时，如果有 token，isAuthenticated 会被正确设置
+        if (state && typeof window !== 'undefined') {
+          const hasToken = Auth.isLoggedIn();
+          if (hasToken && !state.isAuthenticated) {
+            state.isAuthenticated = true;
+          } else if (!hasToken && state.isAuthenticated) {
+            // 如果没有 token 但 isAuthenticated 为 true，则清除状态
+            state.isAuthenticated = false;
+            state.userInfo = null;
+          }
+        }
+      },
     }
   )
 );

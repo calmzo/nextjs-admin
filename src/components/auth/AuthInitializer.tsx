@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useAuthStore } from "@/store/authStore";
 import { Auth } from "@/utils/auth";
+import { handleError } from '@/utils/error-handler';
 
 /**
  * 认证初始化组件
@@ -19,31 +20,40 @@ export default function AuthInitializer() {
         const hasToken = Auth.isLoggedIn();
         
         if (hasToken) {
-          console.log("🔍 检测到有效token，初始化用户信息");
           setLoading(true);
+          
+          // 先设置 isAuthenticated 为 true（基于 token 存在）
+          // 这样可以避免 AuthGuard 在初始化期间误判为未登录
+          // 如果 token 无效，getUserInfo 会失败并清除状态
+          useAuthStore.setState({ isAuthenticated: true });
           
           try {
             // 尝试获取用户信息来验证token有效性
             await getUserInfo();
-            console.log("✅ 用户信息初始化成功");
           } catch (error) {
-            console.error("❌ 用户信息获取失败，清除认证状态:", error);
+            // request.ts 已经处理了错误提示，这里只记录日志
+            handleError(error, { showToast: false });
             // 如果获取用户信息失败，说明token可能已过期
+            // clearSession 会清除 isAuthenticated 状态
             useAuthStore.getState().clearSession();
           } finally {
             setLoading(false);
           }
         } else {
-          console.log("ℹ️ 未检测到有效token");
+          // 确保未认证状态被正确设置
+          useAuthStore.getState().clearSession();
           setLoading(false);
         }
       } catch (error) {
-        console.error("认证初始化失败:", error);
+        // request.ts 已经处理了错误提示，这里只记录日志
+        handleError(error, { showToast: false });
         setLoading(false);
       }
     };
 
-    initializeAuth();
+    // 延迟一点时间确保所有组件都已挂载
+    const timer = setTimeout(initializeAuth, 100);
+    return () => clearTimeout(timer);
   }, [getUserInfo, setLoading]);
 
   // 这个组件不渲染任何内容，只负责初始化

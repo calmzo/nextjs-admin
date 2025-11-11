@@ -21,7 +21,7 @@ export default function ActivitiesCard() {
       <div className="mb-6 flex justify-between">
         <div>
           <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-            Activities
+            活动
           </h3>
         </div>
         <div className="relative inline-block">
@@ -37,13 +37,13 @@ export default function ActivitiesCard() {
               onItemClick={closeDropdown}
               className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
             >
-              View More
+              查看更多
             </DropdownItem>
             <DropdownItem
               onItemClick={closeDropdown}
               className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
             >
-              Delete
+              删除
             </DropdownItem>
           </Dropdown>
         </div>
@@ -80,22 +80,22 @@ export default function ActivitiesCard() {
                   strokeLinejoin="round"
                 />
               </svg>
-              <p className="text-theme-xs text-success-500 font-medium">
-                New invoice
-              </p>
+                <p className="text-theme-xs text-success-500 font-medium">
+                  新发票
+                </p>
             </div>
             <div className="flex items-baseline">
               <h3 className="text-theme-sm font-medium text-gray-800 dark:text-white/90">
                 Francisco Grbbs
               </h3>
-              <span className="text-theme-sm ml-2 font-normal text-gray-500 dark:text-gray-400">
-                created invoice
-              </span>
+                <span className="text-theme-sm ml-2 font-normal text-gray-500 dark:text-gray-400">
+                  创建了发票
+                </span>
             </div>
             <p className="text-theme-sm font-normal text-gray-500 dark:text-gray-400">
               PQ-4491C
             </p>
-            <p className="text-theme-xs mt-1 text-gray-400">Just Now</p>
+            <p className="text-theme-xs mt-1 text-gray-400">刚刚</p>
           </div>
         </div>
 
@@ -122,7 +122,7 @@ export default function ActivitiesCard() {
             <p className="text-theme-sm font-normal text-gray-500 dark:text-gray-400">
               HK-234G
             </p>
-            <p className="text-theme-xs mt-1 text-gray-400">15 minutes ago</p>
+            <p className="text-theme-xs mt-1 text-gray-400">15 分钟前</p>
           </div>
         </div>
 
@@ -149,7 +149,7 @@ export default function ActivitiesCard() {
             <p className="text-theme-sm font-normal text-gray-500 dark:text-gray-400">
               LH-2891C
             </p>
-            <p className="text-theme-xs mt-1 text-gray-400">5 months ago</p>
+            <p className="text-theme-xs mt-1 text-gray-400">5 个月前</p>
           </div>
         </div>
 
@@ -176,7 +176,7 @@ export default function ActivitiesCard() {
             <p className="text-theme-sm font-normal text-gray-500 dark:text-gray-400">
               CK-125NH
             </p>
-            <p className="text-theme-xs mt-1 text-gray-400">2 weeks ago</p>
+            <p className="text-theme-xs mt-1 text-gray-400">2 周前</p>
           </div>
         </div>
       </div>

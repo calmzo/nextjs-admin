@@ -1,6 +1,7 @@
 "use client";
 import { useState, useCallback } from "react";
 import { ConfirmDialogType } from "@/components/ui/ConfirmDialog";
+import logger from '@/utils/logger';
 
 export interface SimpleConfirmConfig {
   title?: string;
@@ -74,7 +75,7 @@ export const simpleConfirmDialog = {
     if (globalShowConfirm) {
       globalShowConfirm(config);
     } else {
-      console.warn("Simple confirm dialog not initialized");
+      logger.warn("Simple confirm dialog not initialized");
     }
   },
 

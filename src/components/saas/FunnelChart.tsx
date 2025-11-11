@@ -15,19 +15,19 @@ const ReactApexChart = dynamic(() => import("react-apexcharts"), {
 export default function FunnelChart() {
   const series = [
     {
-      name: "Ad Impressions",
+      name: "广告展示",
       data: [44, 55, 41, 67, 22, 43, 55, 41],
     },
     {
-      name: "Website Session",
+      name: "网站会话",
       data: [13, 23, 20, 8, 13, 27, 13, 23],
     },
     {
-      name: "App Download",
+      name: "应用下载",
       data: [11, 17, 15, 15, 21, 14, 18, 20],
     },
     {
-      name: "New Users",
+      name: "新用户",
       data: [21, 7, 25, 13, 22, 8, 18, 20],
     },
   ];
@@ -121,7 +121,7 @@ export default function FunnelChart() {
       <div className="mb-6 flex justify-between">
         <div>
           <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-            Conversion Funnel
+            转化漏斗
           </h3>
         </div>
         <div className="relative h-fit">
@@ -137,13 +137,13 @@ export default function FunnelChart() {
               onItemClick={closeDropdown}
               className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
             >
-              View More
+              查看更多
             </DropdownItem>
             <DropdownItem
               onItemClick={closeDropdown}
               className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
             >
-              Delete
+              删除
             </DropdownItem>
           </Dropdown>
         </div>

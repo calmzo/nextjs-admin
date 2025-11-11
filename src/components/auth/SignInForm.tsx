@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import toast from "react-hot-toast";
 
 import Checkbox from "@/components/form/input/Checkbox";
@@ -14,6 +15,9 @@ import { ChevronLeftIcon, EyeCloseIcon, EyeIcon } from "@/icons";
 import { useAuthStore } from "@/store/authStore";
 import AuthAPI from "@/api/auth.api";
 import type { LoginFormData } from "@/types/api";
+import { handleError, handleAuthError, handleCaptchaError } from '@/utils/error-handler';
+import { ErrorCodes } from '@/types/error';
+import type { ApiErrorResponse } from '@/types/error';
 
 export default function SignInForm() {
   // ==================== 状态管理 ====================
@@ -148,21 +152,13 @@ export default function SignInForm() {
       const result = await AuthAPI.getCaptcha();
       setCaptchaImage(result.captchaBase64);
       setCaptchaKey(result.captchaKey);
-    } catch (error: any) {
-      console.error("获取验证码失败:", error);
-      
-      // 根据错误类型显示不同的提示
-      let errorMessage = "获取验证码失败，请重试";
-      
-      if (error?.response?.data?.msg) {
-        errorMessage = error.response.data.msg;
-      } else if (error?.message) {
-        errorMessage = error.message;
-      } else if (error?.status >= 500) {
-        errorMessage = "服务器错误，请稍后重试";
-      }
-      
-      toast.error(errorMessage);
+    } catch (error: unknown) {
+      // 使用统一错误处理
+      handleError(error, {
+        showToast: true,
+        logError: true,
+        customMessage: '获取验证码失败，请重试',
+      });
     } finally {
       setCaptchaLoading(false);
     }
@@ -208,38 +204,28 @@ export default function SignInForm() {
   // ==================== 错误处理 ====================
 
   // 处理登录错误
-  const handleLoginError = (error: any) => {
-    // 根据错误类型显示不同的提示信息
-    let errorMessage = "登录失败，请重试";
-    
-    // 处理新的业务错误格式（从request拦截器返回的）
-    if (error?.code === "A0214") {
-      errorMessage = error.msg || "验证码错误，请重新输入";
-      // 验证码错误时，自动刷新验证码（避免重复调用）
-      if (!captchaLoading) {
-        getCaptcha();
+  const handleLoginError = (error: unknown) => {
+    // 检查是否为验证码错误
+    if (error && typeof error === 'object') {
+      const err = error as ApiErrorResponse;
+      const code = String(err.code || '');
+      
+      // 验证码错误，使用特殊处理（自动刷新验证码）
+      if (code === ErrorCodes.CAPTCHA_ERROR) {
+        handleCaptchaError(error, () => {
+          // 避免重复调用
+          if (!captchaLoading) {
+            getCaptcha();
+          }
+        });
+        return;
       }
-    } else if (error?.response?.data?.msg) {
-      errorMessage = error.response.data.msg;
-    } else if (error?.message) {
-      errorMessage = error.message;
-    } else if (error?.code === "A0001") {
-      errorMessage = "Token已过期，请重新登录";
-    } else if (error?.code === "A0002") {
-      errorMessage = "会话已过期，请重新登录";
-    } else if (error?.response?.status === 401 || error?.status === 401) {
-      errorMessage = "用户名或密码错误";
-    } else if (error?.response?.status === 403 || error?.status === 403) {
-      errorMessage = "访问被拒绝，权限不足";
-    } else if (error?.response?.status === 404 || error?.status === 404) {
-      errorMessage = "请求的资源不存在";
-    } else if (error?.response?.status === 429 || error?.status === 429) {
-      errorMessage = "登录尝试次数过多，请稍后再试";
-    } else if ((error?.response?.status >= 500) || (error?.status >= 500)) {
-      errorMessage = "服务器错误，请稍后重试";
     }
-    // 统一使用toast显示错误信息
-    toast.error(errorMessage);
+    
+    // 其他错误，使用统一认证错误处理
+    // request.ts 已经处理了错误提示，这里只记录日志
+    handleAuthError(error);
+    handleError(error, { showToast: false });
   };
 
 
@@ -266,7 +252,7 @@ export default function SignInForm() {
       // 解析并跳转目标地址
       const redirect = resolveRedirectTarget(new URLSearchParams(window.location.search));
       router.push(redirect);
-    } catch (error: any) {
+    } catch (error: unknown) {
       handleLoginError(error);
     }
   };
@@ -506,10 +492,13 @@ export default function SignInForm() {
                           onClick={getCaptcha}
                           title="点击刷新验证码"
                         >
-                          <img 
+                          <Image 
                             src={captchaImage} 
                             alt="验证码" 
+                            width={96}
+                            height={40}
                             className="h-full w-full object-contain"
+                            unoptimized
                           />
                         </div>
                       ) : (

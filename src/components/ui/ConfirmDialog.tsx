@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Modal } from "./modal";
 
 export type ConfirmDialogType = "warning" | "danger" | "info" | "success";
@@ -114,7 +114,6 @@ export default function ConfirmDialog({
   loading = false,
   showCancelButton = true,
 }: ConfirmDialogProps) {
-  const modalRef = useRef<HTMLDivElement>(null);
   const iconConfig = getIconConfig(type);
   const buttonClass = getButtonConfig(type);
 

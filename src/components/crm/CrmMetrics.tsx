@@ -3,27 +3,27 @@ import Badge from "../ui/badge/Badge";
 const mockData = [
   {
     id: 1,
-    title: "Active Deal",
+    title: "活跃交易",
     value: "$120,369",
     change: "+20%",
     direction: "up",
-    comparisonText: "last month",
+    comparisonText: "较上月",
   },
   {
     id: 2,
-    title: "Revenue Total",
+    title: "总收入",
     value: "$234,210",
     change: "+9.0%",
     direction: "up",
-    comparisonText: "last month",
+    comparisonText: "较上月",
   },
   {
     id: 3,
-    title: "Closed Deals",
+    title: "已关闭交易",
     value: "874",
     change: "-4.5%",
     direction: "down",
-    comparisonText: "last month",
+    comparisonText: "较上月",
   },
 ];
 

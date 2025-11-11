@@ -1,16 +1,17 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import type { DynamicRouteConfig } from '@/router/dynamic-route';
 
 // 权限状态接口
 interface PermissionState {
   // 状态
   isRoutesLoaded: boolean;
-  routes: any[];
+  routes: DynamicRouteConfig[];
   permissions: string[];
   
   // 方法
   setRoutesLoaded: (loaded: boolean) => void;
-  setRoutes: (routes: any[]) => void;
+  setRoutes: (routes: DynamicRouteConfig[]) => void;
   setPermissions: (permissions: string[]) => void;
   resetRouter: () => void;
   clearCache: () => void;
@@ -19,7 +20,8 @@ interface PermissionState {
 // 创建权限状态管理
 export const usePermissionStore = create<PermissionState>()(
   persist(
-    (set, get) => ({
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    (set, _get) => ({
       // 初始状态
       isRoutesLoaded: false,
       routes: [],
@@ -31,7 +33,7 @@ export const usePermissionStore = create<PermissionState>()(
       },
 
       // 设置路由
-      setRoutes: (routes: any[]) => {
+      setRoutes: (routes: DynamicRouteConfig[]) => {
         set({ routes });
       },
 

@@ -4,6 +4,7 @@ import ComponentCard from "../../common/ComponentCard";
 
 import Button from "../../ui/button/Button";
 import { Modal } from "../../ui/modal";
+import logger from '@/utils/logger';
 
 export default function FullScreenModal() {
   const {
@@ -13,7 +14,7 @@ export default function FullScreenModal() {
   } = useModal();
   const handleSave = () => {
     // Handle save logic here
-    console.log("Saving changes...");
+    logger.debug("Saving changes...");
     closeFullscreenModal();
   };
   return (

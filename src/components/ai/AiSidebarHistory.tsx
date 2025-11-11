@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import logger from '@/utils/logger';
 
 interface ChatItem {
   id: string;
@@ -65,13 +66,13 @@ export default function AiSidebarHistory({
 
   const handleRename = (itemId: string) => {
     // Handle rename logic here
-    console.log("Rename item:", itemId);
+    logger.debug("Rename item:", itemId);
     handleDropdownClose();
   };
 
   const handleDelete = (itemId: string) => {
     // Handle delete logic here
-    console.log("Delete item:", itemId);
+    logger.debug("Delete item:", itemId);
     handleDropdownClose();
   };
 

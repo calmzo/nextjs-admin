@@ -85,7 +85,7 @@ export default function RecentOrderAnalytics() {
         <div className="flex flex-col gap-2 mb-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-              Recent Orders
+              最近订单
             </h3>
           </div>
 
@@ -126,10 +126,10 @@ export default function RecentOrderAnalytics() {
                   strokeWidth="1.5"
                 />
               </svg>
-              Filter
+              筛选
             </Button>
             <Button size="sm" variant="outline">
-              See all
+              查看全部
             </Button>
           </div>
         </div>
@@ -144,31 +144,31 @@ export default function RecentOrderAnalytics() {
                   isHeader
                   className="px-4 py-3 font-medium text-gray-500 sm:px-6 text-start text-theme-xs dark:text-gray-400"
                 >
-                  Products
+                  产品
                 </TableCell>
                 <TableCell
                   isHeader
                   className="px-4 py-3 font-medium text-gray-500 sm:px-6 text-start text-theme-xs dark:text-gray-400"
                 >
-                  Category
+                  类别
                 </TableCell>
                 <TableCell
                   isHeader
                   className="px-4 py-3 font-medium text-gray-500 sm:px-6 text-start text-theme-xs dark:text-gray-400"
                 >
-                  Country
+                  国家
                 </TableCell>
                 <TableCell
                   isHeader
                   className="px-4 py-3 font-medium text-gray-500 sm:px-6 text-start text-theme-xs dark:text-gray-400"
                 >
-                  CR
+                  转化率
                 </TableCell>
                 <TableCell
                   isHeader
                   className="px-4 py-3 font-medium text-gray-500 sm:px-6 text-start text-theme-xs dark:text-gray-400"
                 >
-                  Value
+                  价值
                 </TableCell>
               </TableRow>
             </TableHeader>

@@ -14,7 +14,7 @@ import { DropdownItem } from "../ui/dropdown/DropdownItem";
 export default function ChurnRateChart() {
   const churnSeries = [
     {
-      name: "Churn Rate",
+      name: "流失率",
       data: [4.5, 4.2, 4.6, 4.3, 4.1, 4.2, 4.26],
     },
   ];
@@ -77,10 +77,10 @@ export default function ChurnRateChart() {
       <div className="mb-6 flex justify-between">
         <div>
           <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-            Churn Rate
+            流失率
           </h3>
           <p className="text-theme-sm mt-1 text-gray-500 dark:text-gray-400">
-            Downgrade to Free plan
+            降级到免费计划
           </p>
         </div>
         <div className="relative h-fit">
@@ -96,13 +96,13 @@ export default function ChurnRateChart() {
               onItemClick={closeDropdown}
               className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
             >
-              View More
+              查看更多
             </DropdownItem>
             <DropdownItem
               onItemClick={closeDropdown}
               className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
             >
-              Delete
+              删除
             </DropdownItem>
           </Dropdown>
         </div>
@@ -114,7 +114,7 @@ export default function ChurnRateChart() {
           </h3>
           <p className="text-theme-xs mt-1 text-gray-500 dark:text-gray-400">
             <span className="text-error-500 mr-1 inline-block">0.31%</span>
-            than last Week
+            较上周
           </p>
         </div>
         <div className="max-w-full">

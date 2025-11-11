@@ -9,3 +9,12 @@ import { twMerge } from "tailwind-merge";
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(...inputs));
 }
+
+/**
+ * 日志工具
+ * @example
+ * import logger from '@/utils/logger';
+ * logger.info('User logged in', user);
+ * logger.error('Failed to fetch data', error);
+ */
+export { default as logger } from './logger';

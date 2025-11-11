@@ -28,7 +28,7 @@ export default function AdminLayout({
       case "/video-generator":
         return "";
       default:
-        return "p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6";
+        return "p-0 mx-auto max-w-screen-2xl md:p-0";
     }
   };
 

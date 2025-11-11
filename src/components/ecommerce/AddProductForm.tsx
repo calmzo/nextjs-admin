@@ -4,6 +4,7 @@ import Input from "../form/input/InputField";
 import Select from "../form/Select";
 import TextArea from "../form/input/TextArea";
 import Button from "../ui/button/Button";
+import logger from '@/utils/logger';
 
 export default function AddProductForm() {
   const categories = [
@@ -29,7 +30,7 @@ export default function AddProductForm() {
     { value: "4", label: "Gray" },
   ];
   const handleSelectChange = (value: string) => {
-    console.log("Selected value:", value);
+    logger.debug("Selected value:", value);
   };
   return (
     <div className="space-y-6">

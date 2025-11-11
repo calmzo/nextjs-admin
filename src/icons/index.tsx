@@ -56,8 +56,20 @@ import CallIcon from "./call-icon.svg";
 import BoxMoving from "./box-tapped.svg";
 import BoxTapped from "./box-icon.svg";
 import TruckDelivery from "./truck-delivery.svg";
+import ExportIcon from "./export.svg";
+import RefreshIcon from "./refresh.svg";
+import SearchIcon from "./search.svg";
+import SettingsIcon from "./cog-8-tooth.svg";
+import ChevronDoubleRightIcon from "./chevron-double-right.svg";
+import ChevronDoubleLeftIcon from "./chevron-double-left.svg";
 
 export {
+  ChevronDoubleRightIcon,
+  ChevronDoubleLeftIcon,
+  SettingsIcon,
+  ExportIcon,
+  RefreshIcon,
+  SearchIcon,
   BoxTapped,
   TruckDelivery,
   BoxMoving,

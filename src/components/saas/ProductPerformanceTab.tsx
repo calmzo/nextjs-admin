@@ -24,7 +24,7 @@ export default function ProductPerformanceTab() {
       <div className="mb-6 flex justify-between">
         <div>
           <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-            Product Performance
+            产品表现
           </h3>
         </div>
         <div className="relative inline-block">
@@ -40,13 +40,13 @@ export default function ProductPerformanceTab() {
               onItemClick={closeDropdown}
               className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
             >
-              View More
+              查看更多
             </DropdownItem>
             <DropdownItem
               onItemClick={closeDropdown}
               className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
             >
-              Delete
+              删除
             </DropdownItem>
           </Dropdown>
         </div>
@@ -61,7 +61,7 @@ export default function ProductPerformanceTab() {
                 : "text-gray-500 dark:text-gray-400"
             }`}
           >
-            Daily Sales
+            每日销量
           </button>
           <button
             onClick={() => setSelected("online")}
@@ -71,7 +71,7 @@ export default function ProductPerformanceTab() {
                 : "text-gray-500 dark:text-gray-400"
             }`}
           >
-            Online Sales
+            线上销量
           </button>
           <button
             onClick={() => setSelected("new")}
@@ -81,7 +81,7 @@ export default function ProductPerformanceTab() {
                 : "text-gray-500 dark:text-gray-400"
             }`}
           >
-            New Users
+            新用户
           </button>
         </div>
 
@@ -92,9 +92,9 @@ export default function ProductPerformanceTab() {
             <div className="space-y-4">
               <div className="grid grid-cols-2 justify-between gap-10 divide-x divide-gray-100 rounded-xl border border-gray-100 bg-white py-4 dark:divide-gray-800 dark:border-gray-800 dark:bg-gray-800/[0.03]">
                 <div className="px-5">
-                  <span className="block text-sm text-gray-500 dark:text-gray-400">
-                    Digital Product
-                  </span>
+                    <span className="block text-sm text-gray-500 dark:text-gray-400">
+                      数字产品
+                    </span>
                   <div className="mt-1 flex items-center gap-2">
                     <span className="bg-success-50 dark:bg-success-500/15 text-success-600 inline-flex size-5 items-center justify-center rounded-full">
                       <svg
@@ -118,9 +118,9 @@ export default function ProductPerformanceTab() {
                   </div>
                 </div>
                 <div className="px-5">
-                  <span className="block text-sm text-gray-500 dark:text-gray-400">
-                    Physical Product
-                  </span>
+                    <span className="block text-sm text-gray-500 dark:text-gray-400">
+                      实体产品
+                    </span>
                   <div className="mt-1 flex items-center gap-2">
                     <span className="bg-error-50 dark:bg-error-500/15 text-error-600 inline-flex size-5 items-center justify-center rounded-full">
                       <svg
@@ -148,7 +148,7 @@ export default function ProductPerformanceTab() {
                 <div className="mb-3 flex items-start justify-between">
                   <div>
                     <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
-                      Average Daily Sales
+                      平均每日销量
                     </span>
                     <h3 className="text-2xl font-semibold text-gray-800 dark:text-white/90">
                       $2,950
@@ -187,9 +187,9 @@ export default function ProductPerformanceTab() {
             <div className="space-y-4">
               <div className="grid grid-cols-2 justify-between gap-10 divide-x divide-gray-100 rounded-xl border border-gray-100 py-4 dark:divide-gray-800 dark:border-gray-800">
                 <div className="px-5">
-                  <span className="block text-sm text-gray-500 dark:text-gray-400">
-                    Digital Product
-                  </span>
+                    <span className="block text-sm text-gray-500 dark:text-gray-400">
+                      数字产品
+                    </span>
                   <div className="mt-1 flex items-center gap-2">
                     <span className="bg-success-50 dark:bg-success-500/15 text-success-600 inline-flex size-5 items-center justify-center rounded-full">
                       <svg
@@ -213,9 +213,9 @@ export default function ProductPerformanceTab() {
                   </div>
                 </div>
                 <div className="px-5">
-                  <span className="block text-sm text-gray-500 dark:text-gray-400">
-                    Physical Product
-                  </span>
+                    <span className="block text-sm text-gray-500 dark:text-gray-400">
+                      实体产品
+                    </span>
                   <div className="mt-1 flex items-center gap-2">
                     <span className="bg-error-50 dark:bg-error-500/15 text-error-600 inline-flex size-5 items-center justify-center rounded-full">
                       <svg
@@ -243,7 +243,7 @@ export default function ProductPerformanceTab() {
                 <div className="mb-3 flex items-start justify-between">
                   <div>
                     <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
-                      Total Online Sales
+                      线上总销量
                     </span>
                     <h3 className="text-2xl font-semibold text-gray-800 dark:text-white/90">
                       $59,410
@@ -310,9 +310,9 @@ export default function ProductPerformanceTab() {
                   </div>
                 </div>
                 <div className="px-5">
-                  <span className="block text-sm text-gray-500 dark:text-gray-400">
-                    Added last month
-                  </span>
+                    <span className="block text-sm text-gray-500 dark:text-gray-400">
+                      上个月新增
+                    </span>
                   <div className="mt-1 flex items-center gap-2">
                     <h4 className="text-xl font-semibold text-gray-800 dark:text-white/90">
                       8,490
@@ -324,7 +324,7 @@ export default function ProductPerformanceTab() {
                 <div className="mb-3 flex items-start justify-between">
                   <div>
                     <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
-                      Total New Users
+                      新用户总数
                     </span>
                     <h3 className="text-2xl font-semibold text-gray-800 dark:text-white/90">
                       5.9K

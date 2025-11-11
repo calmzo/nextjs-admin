@@ -1,5 +1,5 @@
 "use client";
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useEffect, useCallback, useMemo } from "react";
 import { usePathname } from "next/navigation";
 
 type SidebarContextType = {
@@ -35,6 +35,7 @@ export const SidebarProvider: React.FC<{ children: React.ReactNode }> = ({
   const [activeItem, setActiveItem] = useState<string | null>(null);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const pathname = usePathname();
+  
   // Close sidebar on route change (for mobile)
   useEffect(() => {
     setIsMobileOpen(false);
@@ -57,33 +58,62 @@ export const SidebarProvider: React.FC<{ children: React.ReactNode }> = ({
     };
   }, []);
 
-  const toggleSidebar = () => {
+  // 使用 useCallback 确保函数引用稳定
+  const toggleSidebar = useCallback(() => {
     setIsExpanded((prev) => !prev);
-  };
+  }, []);
 
-  const toggleMobileSidebar = () => {
+  const toggleMobileSidebar = useCallback(() => {
     setIsMobileOpen((prev) => !prev);
-  };
+  }, []);
 
-  const toggleSubmenu = (item: string) => {
+  const toggleSubmenu = useCallback((item: string) => {
     setOpenSubmenu((prev) => (prev === item ? null : item));
-  };
+  }, []);
+
+  const handleSetIsHovered = useCallback((isHovered: boolean) => {
+    setIsHovered(isHovered);
+  }, []);
+
+  const handleSetActiveItem = useCallback((item: string | null) => {
+    setActiveItem(item);
+  }, []);
+
+  // 计算 isExpanded 值（考虑移动端）
+  const computedIsExpanded = useMemo(() => {
+    return isMobile ? false : isExpanded;
+  }, [isMobile, isExpanded]);
+
+  // 使用 useMemo 确保 context value 对象引用稳定，避免不必要的重新渲染
+  const contextValue = useMemo(
+    () => ({
+      isExpanded: computedIsExpanded,
+      isMobileOpen,
+      isHovered,
+      activeItem,
+      openSubmenu,
+      toggleSidebar,
+      toggleMobileSidebar,
+      setIsHovered: handleSetIsHovered,
+      setActiveItem: handleSetActiveItem,
+      toggleSubmenu,
+    }),
+    [
+      computedIsExpanded,
+      isMobileOpen,
+      isHovered,
+      activeItem,
+      openSubmenu,
+      toggleSidebar,
+      toggleMobileSidebar,
+      handleSetIsHovered,
+      handleSetActiveItem,
+      toggleSubmenu,
+    ]
+  );
 
   return (
-    <SidebarContext.Provider
-      value={{
-        isExpanded: isMobile ? false : isExpanded,
-        isMobileOpen,
-        isHovered,
-        activeItem,
-        openSubmenu,
-        toggleSidebar,
-        toggleMobileSidebar,
-        setIsHovered,
-        setActiveItem,
-        toggleSubmenu,
-      }}
-    >
+    <SidebarContext.Provider value={contextValue}>
       {children}
     </SidebarContext.Provider>
   );

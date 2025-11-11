@@ -3,11 +3,12 @@ import { twMerge } from "tailwind-merge";
 
 interface LabelProps {
   htmlFor?: string;
+  required?: boolean;
   children: ReactNode;
   className?: string;
 }
 
-const Label: FC<LabelProps> = ({ htmlFor, children, className }) => {
+const Label: FC<LabelProps> = ({ htmlFor, required, children, className }) => {
   return (
     <label
       htmlFor={htmlFor}
@@ -19,6 +20,7 @@ const Label: FC<LabelProps> = ({ htmlFor, children, className }) => {
         className
       )}
     >
+      {required && <span className="text-red-500 mr-1">*</span>}
       {children}
     </label>
   );
